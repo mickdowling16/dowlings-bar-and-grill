@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dowlings-bar.herokuapp.com',
+ALLOWED_HOSTS = ['dowlings-bar-09ad35498c26.herokuapp.com',
                  '8000-mickdowling16-dowlings-b-j0o30wo01h.us2.codeanyapp.com']
 
 
