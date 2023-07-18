@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Roboto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.green-brand {
+    color: #24704B;
+}
+
+.gold-brand {
+    color: #FFBD59;
+}
+
+.bg-green-brand {
+    background-color: #24704B;
+}
+
+/* ..................................................Body Styles  */
+
+body {
+    background-color: #fcf8eb;
+    font-family: "Roboto Serif", serif;
+}
+
+body h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Alice, serif;
+    font-weight: 700;
+}
+
+/* ..................................................Navbar styles  */
+
+.navbar {
+    position: relative;
+    z-index: 1000;
+    min-height: 50px;
+    border: 1px solid transparent;
+    margin-bottom: 0 !important;
+}
+
+.navbar-brand {
+    font-family: Alice, serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.navbar-brand:hover {
+    color: white;
+}
+
+.header-design {
+    background-color: #24704B;
+    color: white;
+}
+
+.nav-link:hover {
+    color: #FFBD59 !important;
+}
+
+.active {
+    color: #FFBD59 !important;
+}
