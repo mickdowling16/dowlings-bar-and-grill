@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block content %}
+{% block hero %}
 <!-- main hero image section -->
 
 <div class="jumbotron">
@@ -16,6 +17,27 @@
 </div>
 <!-- end of main hero image section -->
 
+{% endblock hero %}
 
+{% block about %}
 
-{% endblock content %}
+<!-- About section -->
+<div class="bg-about">
+    <h2>Welcome</h2>
+    <hr class="hor-line">
+    <p>
+        Welcome to Dowling's Bar & Grill. We are located on the old Dublin road in Co. Westmeath. Join us to watch the
+        biggest live sporting events
+        and eat some of the best American inspired food cooked by our award winning inhouse chef. Transport to New York
+        City with our fresh take
+        on the Irish American Sports Bar.
+    </p>
+    <br>
+    <p>Dowling's Bar & Grill is a brand new sports bar and restaurant in the midlands of Ireland. Our aim is to
+        serve up some of the best American inspired food on the island while showing all
+        live sports daily. We show GAA, Football, NBA, NFL, UFC, WWE, Tennis, Formula 1, Cricket and much much
+        more.. We have over 50 wide screen TV's and cater for all occasions.</p>
+</div>
+<!-- end of About section -->
+
+{% endblock about %}

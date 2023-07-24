@@ -18,6 +18,8 @@
 body {
     background-color: #fcf8eb;
     font-family: "Roboto Serif", serif;
+    position: relative;
+    min-height: 100vh;
 }
 
 body h1,
@@ -68,12 +70,9 @@ h6 {
 
 .page-footer {
     background-color: #24704B;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
     color: white;
-    text-align: center;
+    position: absolute;
+    width: 100%;
 }
 
 .footer-nav {
