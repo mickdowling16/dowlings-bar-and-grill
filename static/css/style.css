@@ -63,3 +63,205 @@ h6 {
 .active {
     color: #FFBD59 !important;
 }
+
+/* ..................................................Footer section Style  */
+
+.page-footer {
+    background-color: #24704B;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.footer-nav {
+    list-style-type: none;
+}
+
+.footer-nav li {
+    text-decoration: none;
+}
+
+/* ..................................................Main Hero Image Style  */
+
+.hero-text {
+    width: 90%;
+    margin: auto;
+}
+
+.jumbotron {
+    background-image:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(36, 112, 75, 0.40)),
+        url('https://assets3.thrillist.com/v1/image/3055098/1200x630/flatten;crop_down;webp=auto;jpeg_quality=70');
+    background-size: cover;
+    height: 600px;
+    color: white;
+    margin-bottom: 0;
+    padding-top: 100px;
+}
+
+.jumbotron p {
+    font-size: 1.5rem;
+}
+
+.btn-yellow-outline {
+    border: 1px solid #FFBD59;
+}
+
+.btn-yellow-outline:hover {
+    color: white;
+    background-color: #FFBD59;
+}
+
+/* ..................................................About Section Style  */
+
+.bg-about {
+    background-size: cover;
+    color: black;
+    margin: 0, auto;
+    text-align: center;
+    overflow: auto;
+    padding-bottom: 15px;
+}
+
+.bg-about h2 {
+    font-size: 3em;
+}
+
+.bg-about P {
+    font-size: 1.25em;
+    width: 90%;
+    margin: auto;
+}
+
+.bg-opening {
+    background-color: #24704B;
+    color: white;
+    margin: 0, auto;
+    text-align: center;
+    overflow: auto;
+    padding-bottom: 15px;
+}
+
+.bg-opening h2 {
+    font-size: 3em;
+}
+
+.hor-line {
+    border: 1px solid #FFBD59;
+    border-radius: 5px;
+    width: 20%;
+}
+
+.about-info {
+    margin: 0;
+    padding: 0;
+}
+
+.about-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+.about-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.about-section p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* ..................................................Opening Hours Section Style  */
+
+.open-hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(36, 112, 75);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: rgba(0, 0, 0, 0.40);
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.20);
+}
+
+tr:last-child {
+    border-bottom: none;
+}
+
+/* ..................................................Contact Us Section Style  */
+
+
+
+/* ..................................................Menu Section Style  */
+
+.menu {
+    padding-top: 15px;
+    text-align: center;
+
+}
+
+.menu-item {
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #fcf8eb;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 3px solid #FFBD59;
+}
+
+.menu-item-details {
+    flex-grow: 1;
+}
+
+.menu-item-title {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.menu-item-description {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.menu-item-price {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.menu-container {
+    background-color: #fff;
+}
+
+.menu-container button {
+    align-items: center;
+}
