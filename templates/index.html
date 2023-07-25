@@ -41,3 +41,43 @@
 <!-- end of About section -->
 
 {% endblock about %}
+
+{% block contact %}
+
+<div class="row bg-green-brand white-brand">
+    <div class="col-6 bar-location">
+        <h3>This is where the map will be</h3>
+    </div>
+    <div class="col-6 contact-us">
+        <h3>Get in touch..</h3>
+        <form role="form" name="ajax-form" id="ajax-form" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="subject">Reason for Query</label>
+                <select class="form-control" id="subject">
+                    <option>Reservations</option>
+                    <option>Menu Items</option>
+                    <option>Restuarant Information</option>
+                    <option>Organise an Event</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea class="form-control" id="message" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock contact %}
