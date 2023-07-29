@@ -150,10 +150,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Sending emails for contact form
-DEFAULT_FROM_EMAIL = 'dowlingsbarandgrill@gmail.com'
-SERVER_EMAIL = 'dowlingsbarandgrill@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'dowlingsbarandgrill@gmail.com'
-EMAIL_HOST_PASSWORD = 'kjpnoojjdecwpojr'
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
