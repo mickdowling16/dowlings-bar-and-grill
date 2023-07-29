@@ -268,3 +268,28 @@ tr:last-child {
 .menu-container button {
     align-items: center;
 }
+
+/* ------------------------------------------ Manage bookings card styles */
+.card {
+    height: 100%;
+}
+
+.booking-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+@media (max-width: 767.98px) {
+    .booking-container .col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .booking-container .col-lg-4 {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+    }
+}

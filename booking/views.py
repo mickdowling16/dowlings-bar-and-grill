@@ -5,6 +5,7 @@ from django.core.mail import EmailMessage, message
 from django.conf import settings
 from django.contrib import messages
 from .models import Bookings
+from django.core.paginator import Paginator
 
 
 class HomeTemplateView(TemplateView):
@@ -61,4 +62,25 @@ class BookingTemplateView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['messages'] = messages.get_messages(self.request)
+        return context
+
+
+class ManageBookingsTemplateView(TemplateView):
+    template_name = "manage-bookings.html"
+    login_required = True
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        bookings = Bookings.objects.all()
+
+        # Pagination code
+        per_page = 3
+        paginator = Paginator(bookings, per_page)
+        page_number = self.request.GET.get('page', 1)
+        bookings = paginator.get_page(page_number)
+
+        context.update({
+            "bookings": bookings,
+            "title": "Manage Bookings"
+        })
         return context

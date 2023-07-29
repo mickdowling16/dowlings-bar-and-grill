@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Manage Bookings</h1>
+    <div class="booking-container">
+        {% for booking in bookings %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ booking.name }}</h5>
+                    <p class="card-text">Email: {{ booking.email }}</p>
+                    <p class="card-text">Phone: {{ booking.phone }}</p>
+                    <p class="card-text">Date: {{ booking.date }}</p>
+                    <p class="card-text">Time: {{ booking.time }}</p>
+                    <p class="card-text">People: {{ booking.people }}</p>
+                    <p class="card-text">Message: {{ booking.message }}</p>
+                    <button class="btn btn-success">Accept</button>
+                    <button class="btn btn-danger">Cancel</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Bookings pagination">
+            <ul class="pagination">
+                {% if bookings.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First">
+                        <span aria-hidden="true">&laquo;&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ bookings.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% for num in bookings.paginator.page_range %}
+                <li class="page-item {% if num == bookings.number %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% endfor %}
+
+                {% if bookings.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ bookings.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ bookings.paginator.num_pages }}" aria-label="Last">
+                        <span aria-hidden="true">&raquo;&raquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+
+{% endblock content %}
