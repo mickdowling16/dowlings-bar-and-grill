@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.core.mail import EmailMessage, message
 from django.conf import settings
+from django.contrib import messages
 
 
 class HomeTemplateView(TemplateView):
     template_name = "index.html"
-    
+
     def post(self, request):
         if request.method == 'POST':
             name = request.POST.get("name")
@@ -27,6 +28,24 @@ class HomeTemplateView(TemplateView):
         else:
             return HttpResponse("Invalid request method. Only POST requests are allowed.")
 
-    
 
-    
+class BookingTemplateView(TemplateView):
+    template_name = "booking.html"
+
+    def post(self, request):
+        bookingname = request.POST.get("booking-name")
+        bookingemail = request.POST.get("booking-email")
+        bookingphone = request.POST.get("booking-phone")
+        bookingdate = request.POST.get("booking-date")
+        bookingtime = request.POST.get("booking-time")
+        bookingpeople = request.POST.get("booking-people")
+        bookingmessage = request.POST.get("booking-message")
+
+        messages.add_message(request, messages.SUCCESS,
+                             f"Thanks {bookingname} for making an booking for the {bookingdate} at {bookingtime}, we will contact you to confirm as soon as possible")
+        return HttpResponseRedirect(request.path)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['messages'] = messages.get_messages(self.request)
+        return context

@@ -20,16 +20,17 @@
     <!-- navigation section -->
     <header class="header-design">
         <nav class="navbar navbar-expand-lg navbar-dark">
-            <a class="navbar-brand" href="/">Dowling's Bar & Grill</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Dowling's Bar & Grill</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span
+                            class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="#menu-anchor">Menu</a>
-                    <a class="nav-item nav-link" href="#">Reservations</a>
+                    <a class="nav-item nav-link" href="{% url 'booking' %}">Reservations</a>
                     <a class="nav-item nav-link" href="#contact-anchor">Contact Us</a>
                 </div>
             </div>
@@ -37,27 +38,10 @@
     </header>
     <!-- end of navigation section -->
 
-    {% block hero %}
+    {% block content %}
 
 
-    {% endblock hero %}
-
-    {% block about %}
-
-    {% endblock about %}
-
-    {% block menu %}
-
-    {% endblock menu %}
-
-    {% block reservations %}
-
-    {% endblock reservations %}
-
-    {% block contact %}
-
-    {% endblock contact %}
-
+    {% endblock content %}
 
     <footer class="page-footer">
         <div class="row">
