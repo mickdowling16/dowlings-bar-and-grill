@@ -4,6 +4,7 @@ from django.views.generic.base import TemplateView
 from django.core.mail import EmailMessage, message
 from django.conf import settings
 from django.contrib import messages
+from .models import Bookings
 
 
 class HomeTemplateView(TemplateView):
@@ -41,8 +42,20 @@ class BookingTemplateView(TemplateView):
         bookingpeople = request.POST.get("booking-people")
         bookingmessage = request.POST.get("booking-message")
 
+        booking = Bookings.objects.create(
+            name=bookingname,
+            email=bookingemail,
+            phone=bookingphone,
+            date=bookingdate,
+            time=bookingtime,
+            people=bookingpeople,
+            message=bookingmessage,
+        )
+
+        booking.save()
+
         messages.add_message(request, messages.SUCCESS,
-                             f"Thanks {bookingname} for making an booking for the {bookingdate} at {bookingtime}, we will contact you to confirm as soon as possible")
+                             f"Thanks {bookingname} for making a booking for the {bookingdate} at {bookingtime}, we will contact you to confirm as soon as possible")
         return HttpResponseRedirect(request.path)
 
     def get_context_data(self, **kwargs):
