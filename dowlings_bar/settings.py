@@ -13,7 +13,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-import env
+from dotenv import load_dotenv
+
+dotenv_path = os.path.join(os.path.dirname(
+    os.path.dirname(__file__)), '../env.py')
+load_dotenv(dotenv_path)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
