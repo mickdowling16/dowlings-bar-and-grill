@@ -15,15 +15,13 @@ import os
 import dj_database_url
 from dotenv import load_dotenv
 
-dotenv_path = os.path.join(os.path.dirname(
-    os.path.dirname(__file__)), '../env.py')
-load_dotenv(dotenv_path)
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
+load_dotenv(os.path.join(BASE_DIR, "env.py"))
 
 
 # Quick-start development settings - unsuitable for production
