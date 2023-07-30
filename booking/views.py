@@ -6,6 +6,9 @@ from django.conf import settings
 from django.contrib import messages
 from .models import Bookings
 from django.core.paginator import Paginator
+import datetime
+from django.template import Context
+from django.template.loader import render_to_string, get_template
 
 
 class HomeTemplateView(TemplateView):
@@ -69,11 +72,39 @@ class ManageBookingsTemplateView(TemplateView):
     template_name = "manage-bookings.html"
     login_required = True
 
+    def post(self, request):
+        date = request.POST.get("date")
+        time = request.POST.get("time")
+        booking_id = request.POST.get("booking-id")
+        booking = Bookings.objects.get(id=booking_id)
+        booking.accepted = True
+        booking.accepted_date = datetime.datetime.now()
+        booking.save()
+
+        data = {
+            "name": booking.name,
+            "date": date,
+            "time": time,
+        }
+
+        message = get_template('email.html').render(data)
+        email = EmailMessage(
+            "About your booking at Dowling's Bar & Grill",
+            message,
+            settings.EMAIL_HOST_USER,
+            [booking.email],
+        )
+        email.content_subtype = "html"
+        email.send()
+
+        messages.add_message(request, messages.SUCCESS,
+                             f"You accepted the booking of {booking.name}")
+        return HttpResponseRedirect(request.path)
+
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         bookings = Bookings.objects.all()
 
-        # Pagination code
         per_page = 3
         paginator = Paginator(bookings, per_page)
         page_number = self.request.GET.get('page', 1)
