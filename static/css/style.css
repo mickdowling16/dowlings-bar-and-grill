@@ -17,6 +17,12 @@
     background-color: #24704B;
 }
 
+.contact-section {
+    background-color: rgba(36, 112, 75, 0.6);
+    padding: 20px;
+    margin: auto;
+}
+
 /* ..................................................Body Styles  */
 
 body {
@@ -79,12 +85,47 @@ h6 {
     width: 100%;
 }
 
-.footer-nav {
+.footer-links {
     list-style-type: none;
+    color: white;
+    text-decoration: none;
 }
 
-.footer-nav li {
+.footer-nav {
+    text-align: center;
+}
+
+.footer-nav a {
+    color: white;
+    text-align: center;
     text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: #FFBD59;
+}
+
+.footer-headers {
+    text-align: center;
+}
+
+.social-icons {
+    text-align: center;
+}
+
+.icons {
+    padding: 20px;
+    font-size: 32px;
+    text-decoration: none;
+    color: #f8f9fa;
+}
+
+.icons:hover {
+    color: #FFBD59;
+}
+
+.footer-address {
+    text-align: center;
 }
 
 /* ..................................................Main Hero Image Style  */
@@ -211,8 +252,13 @@ tr:last-child {
 }
 
 /* ..................................................Contact Us Section Style  */
-
-
+.maps {
+    width: 90%;
+    height: 350px;
+    padding: 20px;
+    margin: 0px auto;
+    display: inline-block;
+}
 
 /* ..................................................Menu Section Style  */
 

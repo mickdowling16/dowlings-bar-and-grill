@@ -1,0 +1,14 @@
+function myMap() {
+    var mapProp = {
+        center: new google.maps.LatLng(53.523572, -7.348435),
+        zoom: 14,
+    };
+    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+    var marker = new google.maps.Marker({
+        position: myCenter,
+        animation: google.maps.Animation.BOUNCE
+    });
+
+    marker.setMap(map);
+}

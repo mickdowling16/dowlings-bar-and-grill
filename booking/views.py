@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.base import TemplateView
-from django.core.mail import EmailMessage, message
+from django.core.mail import EmailMessage, message, send_mail
 from django.conf import settings
 from django.contrib import messages
 from .models import Bookings
