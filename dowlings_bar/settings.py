@@ -37,6 +37,13 @@ DEBUG = True
 ALLOWED_HOSTS = ['dowlings-bar-09ad35498c26.herokuapp.com',
                  '8000-mickdowling16-dowlings-b-j0o30wo01h.us2.codeanyapp.com']
 
+# Admin login settings
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_REDIRECT_URL = '/admin/'
 
 # Application definition
 

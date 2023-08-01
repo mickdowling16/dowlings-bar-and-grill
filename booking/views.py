@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.core.mail import EmailMessage, message, send_mail
@@ -9,6 +9,8 @@ from django.core.paginator import Paginator
 import datetime
 from django.template import Context
 from django.template.loader import render_to_string, get_template
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.forms import AuthenticationForm
 
 
 class HomeTemplateView(TemplateView):
@@ -115,3 +117,25 @@ class ManageBookingsTemplateView(TemplateView):
             "title": "Manage Bookings"
         })
         return context
+
+
+def admin_login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None and user.is_active and user.is_superuser:
+                login(request, user)
+                # Replace with your desired URL path
+                return redirect('/manage-bookings/')
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'admin/admin_login.html', {'form': form})
+
+
+def admin_logout(request):
+    logout(request)
+    return redirect('home')

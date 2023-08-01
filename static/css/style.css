@@ -28,8 +28,16 @@
 body {
     background-color: #fcf8eb;
     font-family: "Roboto Serif", serif;
-    position: relative;
-    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0 auto;
+}
+
+.content-container {
+    min-height: 100%;
+    flex: 1;
 }
 
 body h1,
@@ -81,8 +89,9 @@ h6 {
 .page-footer {
     background-color: #24704B;
     color: white;
-    position: absolute;
+    flex-shrink: 0;
     width: 100%;
+    text-align: center;
 }
 
 .footer-links {
@@ -338,4 +347,13 @@ tr:last-child {
         flex: 0 0 33.33%;
         max-width: 33.33%;
     }
+}
+
+/* ------------------------------------------ Admin login page styling */
+.admin-login-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
