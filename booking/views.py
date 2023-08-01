@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.core.mail import EmailMessage, message, send_mail
@@ -11,6 +11,8 @@ from django.template import Context
 from django.template.loader import render_to_string, get_template
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class HomeTemplateView(TemplateView):
@@ -70,7 +72,7 @@ class BookingTemplateView(TemplateView):
         return context
 
 
-class ManageBookingsTemplateView(TemplateView):
+class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
     template_name = "manage-bookings.html"
     login_required = True
 
@@ -78,7 +80,7 @@ class ManageBookingsTemplateView(TemplateView):
         date = request.POST.get("date")
         time = request.POST.get("time")
         booking_id = request.POST.get("booking-id")
-        booking = Bookings.objects.get(id=booking_id)
+        booking = get_object_or_404(Bookings, id=booking_id)
         booking.accepted = True
         booking.accepted_date = datetime.datetime.now()
         booking.save()
@@ -101,7 +103,7 @@ class ManageBookingsTemplateView(TemplateView):
 
         messages.add_message(request, messages.SUCCESS,
                              f"You accepted the booking of {booking.name}")
-        return HttpResponseRedirect(request.path)
+        return HttpResponseRedirect(reverse('manage'))
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
