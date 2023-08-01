@@ -131,7 +131,7 @@ def admin_login(request):
             if user is not None and user.is_active and user.is_superuser:
                 login(request, user)
                 # Replace with your desired URL path
-                return redirect('/manage-bookings/')
+                return redirect('/manage/')
     else:
         form = AuthenticationForm()
 
