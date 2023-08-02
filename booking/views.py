@@ -114,6 +114,8 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
                 time = request.POST.get("time")
                 booking.suggested_date = date
                 booking.suggested_time = time
+                booking.date = date
+                booking.time = time
                 booking.save()
 
                 data = {
