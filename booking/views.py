@@ -1,14 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.base import TemplateView
-from django.core.mail import EmailMessage, message, send_mail
+from django.core.mail import EmailMessage, send_mail
 from django.conf import settings
 from django.contrib import messages
 from .models import Bookings
 from django.core.paginator import Paginator
 import datetime
-from django.template import Context
-from django.template.loader import render_to_string, get_template
+from django.template.loader import get_template
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse
@@ -16,6 +15,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from datetime import timedelta
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 
 
 class HomeTemplateView(TemplateView):
@@ -80,32 +80,69 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
     login_required = True
 
     def post(self, request):
-        date = request.POST.get("date")
-        time = request.POST.get("time")
+        action = request.POST.get("action")
         booking_id = request.POST.get("booking-id")
         booking = get_object_or_404(Bookings, id=booking_id)
-        booking.accepted = True
-        booking.accepted_date = datetime.datetime.now()
-        booking.save()
 
-        data = {
-            "name": booking.name,
-            "date": date,
-            "time": time,
-        }
+        try:
+            if action == "accept":
+                booking.accepted = True
+                booking.accepted_date = datetime.datetime.now()
+                booking.save()
 
-        message = get_template('email.html').render(data)
-        email = EmailMessage(
-            "About your booking at Dowling's Bar & Grill",
-            message,
-            settings.EMAIL_HOST_USER,
-            [booking.email],
-        )
-        email.content_subtype = "html"
-        email.send()
+                data = {
+                    "name": booking.name,
+                    "date": booking.date,
+                    "time": booking.time,
+                }
 
-        messages.add_message(request, messages.SUCCESS,
-                             f"You accepted the booking of {booking.name}")
+                message = get_template('email.html').render(data)
+                email = EmailMessage(
+                    "About your booking at Dowling's Bar & Grill",
+                    message,
+                    settings.EMAIL_HOST_USER,
+                    [booking.email],
+                )
+                email.content_subtype = "html"
+                email.send()
+
+                messages.add_message(request, messages.SUCCESS,
+                                     f"You accepted the booking of {booking.name}")
+
+            elif action == "suggest_time":
+                date = request.POST.get("date")
+                time = request.POST.get("time")
+                booking.suggested_date = date
+                booking.suggested_time = time
+                booking.save()
+
+                data = {
+                    "name": booking.name,
+                    "date": booking.suggested_date,
+                    "time": booking.suggested_time,
+                }
+
+                message = get_template(
+                    'email_suggested_time.html').render(data)
+                email = EmailMessage(
+                    "Update about your booking at Dowling's Bar & Grill",
+                    message,
+                    settings.EMAIL_HOST_USER,
+                    [booking.email],
+                )
+                email.content_subtype = "html"
+                email.send()
+
+                messages.add_message(request, messages.INFO,
+                                     f"You suggested a new time for the booking of {booking.name}. We will contact you with confirmation.")
+
+        except ValidationError as ve:
+            messages.add_message(request, messages.ERROR,
+                                 f"Validation error occurred: {ve}")
+        except Exception as e:
+            messages.add_message(
+                request, messages.ERROR, f"An error occurred while sending the email: {e}")
+
         return HttpResponseRedirect(reverse('manage'))
 
     def get_context_data(self, *args, **kwargs):
@@ -116,9 +153,6 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
         paginator = Paginator(bookings, per_page)
         page_number = self.request.GET.get('page', 1)
         bookings_page = paginator.get_page(page_number)
-
-        confirmed_bookings = Bookings.objects.filter(accepted=True)
-        unconfirmed_bookings = Bookings.objects.filter(accepted=False)
 
         context.update({
             "unconfirmed_bookings": bookings_page,
@@ -136,7 +170,6 @@ def admin_login(request):
             user = authenticate(username=username, password=password)
             if user is not None and user.is_active and user.is_superuser:
                 login(request, user)
-                # Replace with your desired URL path
                 return redirect('/manage/')
     else:
         form = AuthenticationForm()

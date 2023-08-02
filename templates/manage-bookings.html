@@ -22,21 +22,23 @@
                     <p class="card-text">Time: {{ booking.time }}</p>
                     <p class="card-text">People: {{ booking.people }}</p>
                     <p class="card-text">Message: {{ booking.message }}</p>
-                    {% if booking.accepted == False %}
+                    {% if not booking.accepted %}
                     <form method="POST" action="{% url 'manage' %}">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <input type="hidden" name="booking-id" value="{{ booking.id }}">
-                            <input class="btn-block btn-primary form-control" type="submit" name="action"
-                                value="Confirm">
-                            <input class="btn-block btn-primary form-control" type="submit" name="action"
-                                value="Suggest New Time">
-                            <label for="date">Confirm Date:</label>
-                            <input type="date" class="form-control mb-2" id="date" name="date" required>
-                            <label for="time">Confirm Time:</label>
-                            <input type="time" class="form-control mb-2" id="time" name="time" min="12:00" max="21:00"
-                                step="900" required>
-                        </div>
+                        <input type="hidden" name="booking-id" value="{{ booking.id }}">
+                        <input type="hidden" name="action" value="accept">
+                        <input class="btn-block btn-primary form-control" type="submit" value="Accept">
+                    </form>
+                    <form method="POST" action="{% url 'manage' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="booking-id" value="{{ booking.id }}">
+                        <input type="hidden" name="action" value="suggest_time">
+                        <label for="suggested-date">Suggested Date:</label>
+                        <input type="date" class="form-control mb-2" id="suggested-date" name="date" required>
+                        <label for="suggested-time">Suggested Time:</label>
+                        <input type="time" class="form-control mb-2" id="suggested-time" name="time" min="12:00"
+                            max="21:00" step="900" required>
+                        <input class="btn-block btn-primary form-control" type="submit" value="Suggest New Time">
                     </form>
                     {% endif %}
                 </div>
