@@ -2,16 +2,11 @@
 {% load static %}
 
 {% block content %}
-{% if messages %}
-{% for message in messages %}
-<div class="alert alert-{{ message.tags }}">{{ message }}</div>
-{% endfor %}
-{% endif %}
 
 <div class="container mt-5">
-    <h1>Manage Bookings</h1>
+    <h1>Confirmed Bookings</h1>
     <div class="booking-container">
-        {% for booking in unconfirmed_bookings %}
+        {% for booking in bookings %}
         <div class="col-md-6 col-lg-4">
             <div class="card h-100">
                 <div class="card-body">
@@ -22,22 +17,6 @@
                     <p class="card-text">Time: {{ booking.time }}</p>
                     <p class="card-text">People: {{ booking.people }}</p>
                     <p class="card-text">Message: {{ booking.message }}</p>
-                    {% if booking.accepted == False %}
-                    <form method="POST" action="{% url 'manage' %}">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <input type="hidden" name="booking-id" value="{{ booking.id }}">
-                            <input class="btn-block btn-primary form-control" type="submit" name="action"
-                                value="Confirm">
-                            <input class="btn-block btn-primary form-control" type="submit" name="action" value="Deny">
-                            <label for="date">Confirm Date:</label>
-                            <input type="date" class="form-control mb-2" id="date" name="date" required>
-                            <label for="time">Confirm Time:</label>
-                            <input type="time" class="form-control mb-2" id="time" name="time" min="12:00" max="21:00"
-                                step="900" required>
-                        </div>
-                    </form>
-                    {% endif %}
                 </div>
             </div>
         </div>

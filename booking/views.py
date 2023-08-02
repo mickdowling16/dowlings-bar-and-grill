@@ -13,6 +13,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView
 
 
 class HomeTemplateView(TemplateView):
@@ -109,13 +110,12 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(*args, **kwargs)
         bookings = Bookings.objects.all()
 
-        per_page = 3
-        paginator = Paginator(bookings, per_page)
-        page_number = self.request.GET.get('page', 1)
-        bookings = paginator.get_page(page_number)
+        confirmed_bookings = Bookings.objects.filter(accepted=True)
+        unconfirmed_bookings = Bookings.objects.filter(accepted=False)
 
         context.update({
-            "bookings": bookings,
+            "confirmed_bookings": confirmed_bookings,
+            "unconfirmed_bookings": unconfirmed_bookings,
             "title": "Manage Bookings"
         })
         return context
@@ -141,3 +141,19 @@ def admin_login(request):
 def admin_logout(request):
     logout(request)
     return redirect('home')
+
+
+class ConfirmedBookingsListView(LoginRequiredMixin, ListView):
+    model = Bookings
+    login_required = True
+    template_name = 'confirmed_bookings.html'
+    context_object_name = 'bookings'
+    queryset = Bookings.objects.filter(accepted=True)
+
+
+class UnconfirmedBookingsListView(LoginRequiredMixin, ListView):
+    model = Bookings
+    login_required = True
+    template_name = 'manage-bookings.html'
+    context_object_name = 'bookings'
+    queryset = Bookings.objects.filter(accepted=False)

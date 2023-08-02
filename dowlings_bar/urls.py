@@ -8,5 +8,4 @@ urlpatterns = [
     path('admin/dashboard/', ManageBookingsTemplateView.as_view(), name='manage'),
     path('admin/', admin.site.urls),
     path("", include("booking.urls")),
-    path('admin/', admin.site.urls),
 ]
