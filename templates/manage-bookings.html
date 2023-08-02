@@ -44,18 +44,8 @@
                     <form method="POST" action="{% url 'manage' %}">
                         {% csrf_token %}
                         <input type="hidden" name="booking-id" value="{{ booking.id }}">
-                        <div class="form-group">
-                            <label for="date">Edit Date:</label>
-                            <input type="date" class="form-control mb-2" id="date" name="date"
-                                value="{{ booking.date }}" required>
-                            <label for="time">Edit Time:</label>
-                            <input type="time" class="form-control mb-2" id="time" name="time"
-                                value="{{ booking.time }}" min="12:00" max="21:00" step="900" required>
-                        </div>
-                        <input class="btn-block btn-primary form-control" type="submit" name="action"
-                            value="Update Booking">
-                        <input class="btn-block btn-primary form-control" type="submit" name="action"
-                            value="Accept Booking">
+                        <input type="hidden" name="action" value="accept">
+                        <input class="btn-block btn-primary form-control" type="submit" value="Accept Booking">
                     </form>
                     {% endif %}
                 </div>
