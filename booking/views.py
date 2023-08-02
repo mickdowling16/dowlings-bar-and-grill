@@ -108,14 +108,18 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        bookings = Bookings.objects.all()
+        bookings = Bookings.objects.filter(accepted=False).order_by('date')
+
+        per_page = 3
+        paginator = Paginator(bookings, per_page)
+        page_number = self.request.GET.get('page', 1)
+        bookings_page = paginator.get_page(page_number)
 
         confirmed_bookings = Bookings.objects.filter(accepted=True)
         unconfirmed_bookings = Bookings.objects.filter(accepted=False)
 
         context.update({
-            "confirmed_bookings": confirmed_bookings,
-            "unconfirmed_bookings": unconfirmed_bookings,
+            "unconfirmed_bookings": bookings_page,
             "title": "Manage Bookings"
         })
         return context
