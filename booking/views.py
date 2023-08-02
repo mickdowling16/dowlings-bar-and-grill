@@ -14,6 +14,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
+from datetime import timedelta
+from django.utils import timezone
 
 
 class HomeTemplateView(TemplateView):
@@ -154,7 +156,9 @@ class ConfirmedBookingsListView(LoginRequiredMixin, ListView):
     context_object_name = 'bookings'
 
     def get_queryset(self):
-        queryset = super().get_queryset().filter(accepted=True).order_by('date')
+        today = timezone.now().date()
+        queryset = super().get_queryset().filter(
+            accepted=True, date__gte=today - timedelta(days=1)).order_by('date')
         return queryset
 
     def get_context_data(self, *args, **kwargs):
