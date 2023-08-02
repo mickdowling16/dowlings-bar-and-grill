@@ -136,6 +136,42 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
                 messages.add_message(request, messages.INFO,
                                      f"You suggested a new time for the booking of {booking.name}. We will contact you with confirmation.")
 
+            elif action == "accept_suggestion":
+                booking.date = booking.suggested_date
+                booking.time = booking.suggested_time
+                booking.suggested_date = None
+                booking.suggested_time = None
+                booking.save()
+
+                data = {
+                    "name": booking.name,
+                    "date": booking.date,
+                    "time": booking.time,
+                }
+
+                message = get_template('email.html').render(data)
+                email = EmailMessage(
+                    "Update about your booking at Dowling's Bar & Grill",
+                    message,
+                    settings.EMAIL_HOST_USER,
+                    [booking.email],
+                )
+                email.content_subtype = "html"
+                email.send()
+
+                messages.add_message(request, messages.SUCCESS,
+                                     f"You accepted the new suggested booking of {booking.name}")
+
+            elif action == "update_booking":
+                date = request.POST.get("date")
+                time = request.POST.get("time")
+                booking.date = date
+                booking.time = time
+                booking.save()
+
+                messages.add_message(request, messages.SUCCESS,
+                                     f"You updated the booking of {booking.name}")
+
         except ValidationError as ve:
             messages.add_message(request, messages.ERROR,
                                  f"Validation error occurred: {ve}")
