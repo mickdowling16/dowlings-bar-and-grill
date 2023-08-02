@@ -152,7 +152,23 @@ class ConfirmedBookingsListView(LoginRequiredMixin, ListView):
     login_required = True
     template_name = 'confirmed_bookings.html'
     context_object_name = 'bookings'
-    queryset = Bookings.objects.filter(accepted=True)
+
+    def get_queryset(self):
+        queryset = super().get_queryset().filter(accepted=True).order_by('date')
+        return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        per_page = 3
+        paginator = Paginator(self.object_list, per_page)
+        page_number = self.request.GET.get('page', 1)
+        bookings_page = paginator.get_page(page_number)
+
+        context.update({
+            "bookings": bookings_page,
+            "title": "Confirmed Bookings"
+        })
+        return context
 
 
 class UnconfirmedBookingsListView(LoginRequiredMixin, ListView):
