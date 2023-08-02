@@ -133,8 +133,19 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
                 email.content_subtype = "html"
                 email.send()
 
+                bookings = Bookings.objects.filter(
+                    accepted=False).order_by('date')
+                context = self.get_context_data(unconfirmed_bookings=bookings)
+                self.request.session['django_timezone'] = 'UTC'
+                context.update({
+                    "unconfirmed_bookings": bookings,
+                    "title": "Manage Bookings"
+                })
+
                 messages.add_message(request, messages.INFO,
-                                     f"You suggested a new time for the booking of {booking.name}. We will contact you with confirmation.")
+                                     f"You suggested a new time for the booking of {booking.name}. An email will be sent to the customer.")
+
+                return render(request, self.template_name, context)
 
         except ValidationError as ve:
             messages.add_message(request, messages.ERROR,
