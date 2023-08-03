@@ -227,3 +227,15 @@ class UnconfirmedBookingsListView(LoginRequiredMixin, ListView):
     template_name = 'manage-bookings.html'
     context_object_name = 'bookings'
     queryset = Bookings.objects.filter(accepted=False)
+
+
+class CancelBookingView(LoginRequiredMixin, TemplateView):
+    login_required = True
+
+    def post(self, request, booking_id):
+        booking = get_object_or_404(Bookings, id=booking_id)
+        booking.delete()
+
+        messages.add_message(request, messages.SUCCESS,
+                             f"The booking for {booking.name} has been cancelled.")
+        return HttpResponseRedirect(reverse('confirmed_bookings'))

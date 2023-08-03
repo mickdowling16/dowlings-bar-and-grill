@@ -17,6 +17,10 @@
                     <p class="card-text">Time: {{ booking.time }}</p>
                     <p class="card-text">People: {{ booking.people }}</p>
                     <p class="card-text">Message: {{ booking.message }}</p>
+                    <form method="POST" action="{% url 'cancel_booking' booking.id %}">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-danger" value="Cancel Booking">
+                    </form>
                 </div>
             </div>
         </div>
