@@ -229,13 +229,28 @@ class UnconfirmedBookingsListView(LoginRequiredMixin, ListView):
     queryset = Bookings.objects.filter(accepted=False)
 
 
-class CancelBookingView(LoginRequiredMixin, TemplateView):
-    login_required = True
+class CancelBookingView(RedirectView):
+    permanent = False
 
-    def post(self, request, booking_id):
+    def get_redirect_url(self, *args, **kwargs):
+        booking_id = kwargs['booking_id']
         booking = get_object_or_404(Bookings, id=booking_id)
         booking.delete()
 
-        messages.add_message(request, messages.SUCCESS,
-                             f"The booking for {booking.name} has been cancelled.")
-        return HttpResponseRedirect(reverse('confirmed_bookings'))
+        data = {
+            "name": booking.name,
+            "date": booking.date,
+            "time": booking.time,
+        }
+
+        message = get_template('email_cancel_booking.html').render(data)
+        email = EmailMessage(
+            "Cancellation of your booking at Dowling's Bar & Grill",
+            message,
+            settings.EMAIL_HOST_USER,
+            [booking.email],
+        )
+        email.content_subtype = "html"
+        email.send()
+
+        return reverse('confirmed_bookings')
