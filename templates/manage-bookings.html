@@ -10,59 +10,61 @@
 
 <div class="container mt-5">
     <h1>Manage Bookings</h1>
-    <div class="booking-container">
+    <div class="booking-container mt-4">
         {% for booking in unconfirmed_bookings %}
         <div class="col-md-6 col-lg-4">
             <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">{{ booking.name }}</h5>
-                    <p class="card-text">Email: {{ booking.email }}</p>
-                    <p class="card-text">Phone: {{ booking.phone }}</p>
-                    {% if booking.suggested_date and booking.suggested_time %}
-                    <p class="card-text">Date: {{ booking.suggested_date }}</p>
-                    <p class="card-text">Time: {{ booking.suggested_time }}</p>
-                    {% else %}
-                    <p class="card-text">Date: {{ booking.date }}</p>
-                    <p class="card-text">Time: {{ booking.time }}</p>
-                    {% endif %}
-                    <p class="card-text">People: {{ booking.people }}</p>
-                    <p class="card-text">Message: {{ booking.message }}</p>
-                    {% if not booking.accepted %}
-                    <form method="POST" action="{% url 'manage' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="booking-id" value="{{ booking.id }}">
-                        <input type="hidden" name="action" value="accept">
-                        <input class="btn-block btn-primary form-control" type="submit" value="Accept">
-                    </form>
-                    <form method="POST" action="{% url 'manage' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="booking-id" value="{{ booking.id }}">
-                        <input type="hidden" name="action" value="suggest_time">
-                        <label for="suggested-date">Suggested Date:</label>
-                        <input type="date" class="form-control mb-2" id="suggested-date" name="date" required>
-                        <label for="suggested-time">Suggested Time:</label>
-                        <input type="time" class="form-control mb-2" id="suggested-time" name="time" min="12:00"
-                            max="21:00" step="900" required>
-                        <input class="btn-block btn-primary form-control" type="submit" value="Suggest New Time">
-                    </form>
-                    {% else %}
-                    <form method="POST" action="{% url 'manage' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="booking-id" value="{{ booking.id }}">
-                        <div class="form-group">
-                            <label for="date">Edit Date:</label>
-                            <input type="date" class="form-control mb-2" id="date" name="date"
-                                value="{{ booking.date }}" required>
-                            <label for="time">Edit Time:</label>
-                            <input type="time" class="form-control mb-2" id="time" name="time"
-                                value="{{ booking.time }}" min="12:00" max="21:00" step="900" required>
-                        </div>
-                        <input class="btn-block btn-primary form-control" type="submit" name="action"
-                            value="Update Booking">
-                        <input class="btn-block btn-primary form-control" type="submit" name="action"
-                            value="Accept Booking">
-                    </form>
-                    {% endif %}
+                <div class="card h-100 booking-card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ booking.name }}</h5>
+                        <p class="card-text">Email: {{ booking.email }}</p>
+                        <p class="card-text">Phone: {{ booking.phone }}</p>
+                        {% if booking.suggested_date and booking.suggested_time %}
+                        <p class="card-text">Date: {{ booking.suggested_date }}</p>
+                        <p class="card-text">Time: {{ booking.suggested_time }}</p>
+                        {% else %}
+                        <p class="card-text">Date: {{ booking.date }}</p>
+                        <p class="card-text">Time: {{ booking.time }}</p>
+                        {% endif %}
+                        <p class="card-text">People: {{ booking.people }}</p>
+                        <p class="card-text">Message: {{ booking.message }}</p>
+                        {% if not booking.accepted %}
+                        <form method="POST" action="{% url 'manage' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="booking-id" value="{{ booking.id }}">
+                            <input type="hidden" name="action" value="accept">
+                            <input class="btn-block btn-primary form-control" type="submit" value="Accept">
+                        </form>
+                        <form method="POST" action="{% url 'manage' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="booking-id" value="{{ booking.id }}">
+                            <input type="hidden" name="action" value="suggest_time">
+                            <label for="suggested-date">Suggested Date:</label>
+                            <input type="date" class="form-control mb-2" id="suggested-date" name="date" required>
+                            <label for="suggested-time">Suggested Time:</label>
+                            <input type="time" class="form-control mb-2" id="suggested-time" name="time" min="12:00"
+                                max="21:00" step="900" required>
+                            <input class="btn-block btn-primary form-control" type="submit" value="Suggest New Time">
+                        </form>
+                        {% else %}
+                        <form method="POST" action="{% url 'manage' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="booking-id" value="{{ booking.id }}">
+                            <div class="form-group">
+                                <label for="date">Edit Date:</label>
+                                <input type="date" class="form-control mb-2" id="date" name="date"
+                                    value="{{ booking.date }}" required>
+                                <label for="time">Edit Time:</label>
+                                <input type="time" class="form-control mb-2" id="time" name="time"
+                                    value="{{ booking.time }}" min="12:00" max="21:00" step="900" required>
+                            </div>
+                            <input class="btn-block btn-primary form-control" type="submit" name="action"
+                                value="Update Booking">
+                            <input class="btn-block btn-primary form-control" type="submit" name="action"
+                                value="Accept Booking">
+                        </form>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>

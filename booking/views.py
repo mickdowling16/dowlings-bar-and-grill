@@ -162,7 +162,7 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(*args, **kwargs)
         bookings = Bookings.objects.filter(accepted=False).order_by('date')
 
-        per_page = 3
+        per_page = 9
         paginator = Paginator(bookings, per_page)
         page_number = self.request.GET.get('page', 1)
         bookings_page = paginator.get_page(page_number)
@@ -209,7 +209,7 @@ class ConfirmedBookingsListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        per_page = 3
+        per_page = 9
         paginator = Paginator(self.object_list, per_page)
         page_number = self.request.GET.get('page', 1)
         bookings_page = paginator.get_page(page_number)

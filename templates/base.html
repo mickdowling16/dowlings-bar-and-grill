@@ -29,9 +29,9 @@
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span
                             class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="#menu-anchor">Menu</a>
+                    <a class="nav-item nav-link" href="{% url 'home' %}#menu-anchor">Menu</a>
                     <a class="nav-item nav-link" href="{% url 'booking' %}">Reservations</a>
-                    <a class="nav-item nav-link" href="#contact-anchor">Contact Us</a>
+                    <a class="nav-item nav-link" href="{% url 'home' %}#contact-anchor">Contact Us</a>
                     <a class="nav-item nav-link" href="{% url 'admin_login' %}">Admin Log In</a>
 
                     {% if request.user.is_authenticated and request.user.is_superuser %}
