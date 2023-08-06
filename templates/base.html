@@ -47,6 +47,7 @@
                             <a class="dropdown-item" href="{% url 'confirmed_bookings' %}">Confirmed Bookings</a>
                         </div>
                     </div>
+                    <a class="nav-item nav-link" href="{% url 'admin_logout' %}">Log Out</a>
                     {% endif %}
                 </div>
             </div>
@@ -75,25 +76,23 @@
                     <a href="https://www.pinterest.ie/" target="_blank"><i class="fa-brands fa-pinterest icons"></i></a>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-sm-12 footer-nav">
                 <h3 class="footer-headers">Find what you need?</h3>
                 <hr class="hor-line">
-                <div class="footer-nav">
-                    <ul class="footer-nav">
-                        <li class="footer-links"><a href="{% url 'home' %}">Home</a></li>
-                        <li class="footer-links"><a href="{% url 'booking' %}">Reservations</a></li>
-                        <li class="footer-links"><a href="{% url 'home' %}#menu-anchor">Menu</a></li>
-                        <li class="footer-links"><a href="{% url 'home' %}#contact-anchor">Contact Us</a></li>
-                    </ul>
-                </div>
+                <ul class="footer-nav">
+                    <li class="footer-links"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="footer-links"><a href="{% url 'booking' %}">Reservations</a></li>
+                    <li class="footer-links"><a href="{% url 'home' %}#menu-anchor">Menu</a></li>
+                    <li class="footer-links"><a href="{% url 'home' %}#contact-anchor">Contact Us</a></li>
+                </ul>
             </div>
             <div class="col-md-4 col-sm-12">
                 <h3 class="footer-headers">Where to find us</h3>
                 <hr class="hor-line">
                 <div class="footer-address">
-                    <p>27 West Street,</p>
-                    <p>Johnstown,</p>
-                    <p>Dublin 4,</p>
+                    <p>Eustace St,</p>
+                    <p>Temple Bar,</p>
+                    <p>Dublin 2,</p>
                     <p>Co. Dublin.</p>
                 </div>
             </div>
