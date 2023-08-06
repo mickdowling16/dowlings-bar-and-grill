@@ -170,65 +170,26 @@ h6 {
 
 /* ..................................................About Section Style  */
 
-.bg-about {
-    background-size: cover;
-    color: black;
-    margin: 0, auto;
-    text-align: center;
-    overflow: auto;
-    padding-bottom: 15px;
-}
-
-.bg-about h2 {
-    font-size: 3em;
-}
-
-.bg-about P {
-    font-size: 1.25em;
-    width: 90%;
-    margin: auto;
-}
-
-.bg-opening {
-    background-color: #24704B;
-    color: white;
-    margin: 0, auto;
-    text-align: center;
-    overflow: auto;
-    padding-bottom: 15px;
-}
-
-.bg-opening h2 {
-    font-size: 3em;
-}
-
 .hor-line {
     border: 1px solid #FFBD59;
     border-radius: 5px;
     width: 20%;
 }
 
-.about-info {
-    margin: 0;
-    padding: 0;
+.about-image {
+    margin: auto 0;
+    border-radius: 20px;
+    width: 600px;
+    height: 400px;
 }
 
-.about-section {
-    padding: 50px 0;
-    background-color: #f8f9fa;
+#about-section {
+    color: black;
+    font-size: larger;
 }
 
-.about-section h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
+.about-heading {
     text-align: center;
-}
-
-.about-section p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    text-align: justify;
 }
 
 /* ..................................................Opening Hours Section Style  */
