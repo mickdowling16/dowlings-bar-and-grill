@@ -18,9 +18,14 @@
 }
 
 .contact-section {
-    background-color: rgba(36, 112, 75, 0.6);
+    background-image:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(36, 112, 75, 0.80)),
+        url('https://assets3.thrillist.com/v1/image/2859420/1000x666/flatten;crop;webp=auto;jpeg_quality=60.jpg');
     padding: 20px;
     margin: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 /* ..................................................Body Styles  */
@@ -152,11 +157,15 @@ h6 {
     height: 600px;
     color: white;
     margin-bottom: 0;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 .jumbotron p {
     font-size: 1.5rem;
+}
+
+.hero-btn {
+    width: 100%;
 }
 
 .btn-yellow-outline {
@@ -228,6 +237,7 @@ tr:last-child {
     padding: 20px;
     margin: 0px auto;
     display: inline-block;
+    border-radius: 20px;
 }
 
 /* ..................................................Menu Section Style  */

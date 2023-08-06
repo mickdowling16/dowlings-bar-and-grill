@@ -9,16 +9,20 @@
         <h1>Dowling's Bar & Grill</h1>
         <h2>Check out our game day menu and call us or book your table online to gaurentee your spot!</h2>
         <br>
-        <a href="{% url 'booking' %}"><button type="button"
-                class="btn btn-outline-warning btn-lg btn-yellow-outline">Book A Table <i
-                    class="fa-solid fa-hand-pointer"></i></button></a>
-        <a href="{% url 'home' %}#menu-anchor"><button type="button"
-                class="btn btn-outline-warning btn-lg btn-yellow-outline">View Menu <i
-                    class="fa-solid fa-utensils"></i></button></a>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 mb-1">
+                <a href="{% url 'booking' %}"><button type="button"
+                        class="hero-btn btn btn-outline-warning btn-lg btn-yellow-outline">Book A Table <i
+                            class="fa-solid fa-hand-pointer"></i></button></a>
+            </div>
+            <div class="col-md-6 col-sm-12 mb-1">
+                <a href="{% url 'home' %}#menu-anchor"><button type="button"
+                        class="hero-btn btn btn-outline-warning btn-lg btn-yellow-outline">View Menu <i
+                            class="fa-solid fa-utensils"></i></button></a>
+            </div>
+        </div>
     </div>
 </div>
-<!-- end of main hero image section -->
-
 
 <!-- About section -->
 <section id="about-section">
@@ -26,7 +30,7 @@
         <h2 class="about-heading">Welcome</h2>
         <hr class="hor-line">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 mt-5">
                 <p>
                     Welcome to Dowling's Bar and Grill – where the exhilarating world of sports and the unmistakable New
                     York
@@ -44,19 +48,19 @@
                     unshaken and as
                     brought us back to the shores of Dublin City.</p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-5">
                 <img class="img-fluid about-image" src="{% static 'images/dowlings-pub.jpg' %}"
                     alt="Dowling's Bar and Grill">
             </div>
 
 
         </div>
-        <div class="row mt-5">
-            <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6 mt-5">
                 <img class="img-fluid about-image" src="{% static 'images/sports-bar.jpg' %}"
                     alt="Dowling's Bar and Grill">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-5">
                 <p>Step inside and soak in the electric atmosphere that mirrors the excitement of a packed stadium. The
                     walls filled
                     with sports memorabilia collected over the years, and the cheers from fellow sports enthusiasts
