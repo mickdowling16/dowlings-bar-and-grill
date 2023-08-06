@@ -16,6 +16,7 @@ from django.views.generic import ListView
 from datetime import timedelta
 from django.utils import timezone
 from django.core.exceptions import ValidationError
+from datetime import datetime
 
 
 class HomeTemplateView(TemplateView):
@@ -202,9 +203,26 @@ class ConfirmedBookingsListView(LoginRequiredMixin, ListView):
     context_object_name = 'bookings'
 
     def get_queryset(self):
+        if self.request.GET.get('clear_filters'):
+            return super().get_queryset().filter(
+                accepted=True).order_by('date')
+
         today = timezone.now().date()
-        queryset = super().get_queryset().filter(
-            accepted=True, date__gte=today - timedelta(days=1)).order_by('date')
+        date_filter = self.request.GET.get('date')
+
+        if date_filter:
+            try:
+                date_filter = timezone.datetime.strptime(
+                    date_filter, '%Y-%m-%d').date()
+                queryset = super().get_queryset().filter(
+                    accepted=True, date=date_filter).order_by('date')
+            except ValueError:
+                queryset = super().get_queryset().filter(
+                    accepted=True, date__gte=today - timedelta(days=1)).order_by('date')
+        else:
+            queryset = super().get_queryset().filter(
+                accepted=True, date__gte=today - timedelta(days=1)).order_by('date')
+
         return queryset
 
     def get_context_data(self, *args, **kwargs):
@@ -252,5 +270,8 @@ class CancelBookingView(RedirectView):
         )
         email.content_subtype = "html"
         email.send()
+
+        messages.success(
+            self.request, "Booking has been canceled successfully!")
 
         return reverse('confirmed_bookings')

@@ -88,7 +88,6 @@ var menuItems = [
     }
 ];
 
-// Function to generate the HTML for menu items
 function generateMenuItems() {
     var menuContainer = document.getElementById("menu-container");
     for (var i = 0; i < menuItems.length; i++) {
@@ -119,6 +118,4 @@ function generateMenuItems() {
         }
     }
 }
-
-// Call the function to generate the menu items when the page loads
 window.onload = generateMenuItems;

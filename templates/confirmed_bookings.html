@@ -2,9 +2,22 @@
 {% load static %}
 
 {% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+{% endfor %}
+{% endif %}
 
 <div class="container mt-5">
     <h1>Confirmed Bookings</h1>
+
+    <form method="get" action="{% url 'confirmed_bookings' %}">
+        <label for="date">Filter by Date:</label>
+        <input type="date" name="date" id="date">
+        <button type="submit">Filter</button>
+        <button type="submit" name="clear_filters">Clear Filters</button>
+    </form>
+
     <div class="booking-container">
         {% for booking in bookings %}
         <div class="col-md-6 col-lg-4">
