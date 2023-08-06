@@ -12,8 +12,9 @@
         <a href="{% url 'booking' %}"><button type="button"
                 class="btn btn-outline-warning btn-lg btn-yellow-outline">Book A Table <i
                     class="fa-solid fa-hand-pointer"></i></button></a>
-        <button type="button" class="btn btn-outline-warning btn-lg btn-yellow-outline">View Menu <i
-                class="fa-solid fa-utensils"></i></button>
+        <a href="{% url 'home' %}#menu-anchor"><button type="button"
+                class="btn btn-outline-warning btn-lg btn-yellow-outline">View Menu <i
+                    class="fa-solid fa-utensils"></i></button></a>
     </div>
 </div>
 <!-- end of main hero image section -->
@@ -98,11 +99,11 @@
 <!-- Start of Contact Us section -->
 
 <div id="contact-anchor" class="row contact-section white-brand">
-    <div class="col-6 bar-location">
+    <div class="col-md-6 col-sm-12 bar-location">
         <h3>Know Where To Find Us</h3>
         <div id="googleMap" class="maps"></div>
     </div>
-    <div class="col-6 contact-us">
+    <div class="col-md-6 col-sm-12 contact-us">
         <h3>Get in touch..</h3>
         <form role="form" name="ajax-form" id="ajax-form" method="POST" action="{% url 'home' %}">
             {% csrf_token %}

@@ -280,6 +280,11 @@ tr:last-child {
     text-align: center;
 }
 
+
+.book-a-table {
+    margin-bottom: 50px;
+}
+
 /* ------------------------------------------ Manage bookings card styles */
 .card {
     height: 100%;
