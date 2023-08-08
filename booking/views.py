@@ -104,8 +104,8 @@ class BookingTemplateView(TemplateView):
 
 class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
     template_name = "manage-bookings.html"
-    # make sure admin must be logged in to view page
     login_required = True
+    login_url = '/admin_login/'
 
     def post(self, request):
         action = request.POST.get("action")
