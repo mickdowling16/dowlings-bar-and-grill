@@ -16,7 +16,8 @@ from django.views.generic import ListView
 from datetime import timedelta
 from django.utils import timezone
 from django.core.exceptions import ValidationError
-from datetime import datetime
+from django.db.models import Sum
+from django.http import JsonResponse
 
 
 class HomeTemplateView(TemplateView):
@@ -29,6 +30,7 @@ class HomeTemplateView(TemplateView):
             subject = request.POST.get("subject")
             message = request.POST.get("message")
 
+            # send email with contact form information to restuarant
             email = EmailMessage(
                 subject=f"{name} has sent an enquiry about {subject}",
                 body=f"{message}, This message was sent from {email}",
@@ -54,20 +56,44 @@ class BookingTemplateView(TemplateView):
         bookingpeople = request.POST.get("booking-people")
         bookingmessage = request.POST.get("booking-message")
 
-        booking = Bookings.objects.create(
-            name=bookingname,
-            email=bookingemail,
-            phone=bookingphone,
-            date=bookingdate,
-            time=bookingtime,
-            people=bookingpeople,
-            message=bookingmessage,
-        )
+        # Defining the maximum capacity allowed per 30-minute slot
+        max_capacity_per_slot = 20
 
-        booking.save()
+        booking_date = datetime.datetime.strptime(
+            bookingdate, "%Y-%m-%d").date()
+        booking_time = datetime.datetime.strptime(bookingtime, "%H:%M").time()
 
-        messages.add_message(request, messages.SUCCESS,
-                             f"Thanks {bookingname} for making a booking for the {bookingdate} at {bookingtime}, we will contact you to confirm as soon as possible")
+        # Calculate the end time of the booking
+        end_time = (datetime.datetime.combine(datetime.date(1, 1, 1), booking_time) +
+                    datetime.timedelta(minutes=int(bookingpeople) * 30)).time()
+
+        # Calculate the total number of people already booked for the given time slot
+        total_people_booked = Bookings.objects.filter(
+            date=booking_date,
+            time__range=(booking_time, end_time)
+        ).aggregate(Sum('people'))['people__sum'] or 0
+
+        # Calculate the remaining capacity for the time slot
+        remaining_capacity = max_capacity_per_slot - total_people_booked
+
+        if remaining_capacity >= int(bookingpeople):
+            booking = Bookings.objects.create(
+                name=bookingname,
+                email=bookingemail,
+                phone=bookingphone,
+                date=bookingdate,
+                time=bookingtime,
+                people=bookingpeople,
+                message=bookingmessage,
+            )
+            booking.save()
+
+            messages.add_message(request, messages.SUCCESS,
+                                 f"Thanks {bookingname} for making a booking for the {bookingdate} at {bookingtime}, we will contact you to confirm as soon as possible")
+        else:
+            messages.add_message(request, messages.WARNING,
+                                 "Sorry, there are no available bookings for this time slot, please try an alternative time.")
+
         return HttpResponseRedirect(request.path)
 
     def get_context_data(self, **kwargs):
@@ -78,6 +104,7 @@ class BookingTemplateView(TemplateView):
 
 class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
     template_name = "manage-bookings.html"
+    # make sure admin must be logged in to view page
     login_required = True
 
     def post(self, request):
@@ -96,7 +123,7 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
                     "date": booking.date,
                     "time": booking.time,
                 }
-
+                # email customer to confirm booking time and date using email.html template
                 message = get_template('email.html').render(data)
                 email = EmailMessage(
                     "About your booking at Dowling's Bar & Grill",
@@ -107,6 +134,7 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
                 email.content_subtype = "html"
                 email.send()
 
+                # success message when booking confirmed
                 messages.add_message(request, messages.SUCCESS,
                                      f"You accepted the booking of {booking.name}")
 
@@ -125,6 +153,7 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
                     "time": booking.suggested_time,
                 }
 
+                # email customer with new suggested time using email_suggested_time.html template
                 message = get_template(
                     'email_suggested_time.html').render(data)
                 email = EmailMessage(
@@ -149,7 +178,7 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
                                      f"You suggested a new time for the booking of {booking.name}. An email will be sent to the customer.")
 
                 return render(request, self.template_name, context)
-
+        # messages for error handling for validation
         except ValidationError as ve:
             messages.add_message(request, messages.ERROR,
                                  f"Validation error occurred: {ve}")
@@ -163,6 +192,7 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(*args, **kwargs)
         bookings = Bookings.objects.filter(accepted=False).order_by('date')
 
+        # pagination to show only 9 bookings per page
         per_page = 9
         paginator = Paginator(bookings, per_page)
         page_number = self.request.GET.get('page', 1)
