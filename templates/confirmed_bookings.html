@@ -30,10 +30,18 @@
                     <p class="card-text">Time: {{ booking.time }}</p>
                     <p class="card-text">People: {{ booking.people }}</p>
                     <p class="card-text">Message: {{ booking.message }}</p>
-                    <form method="POST" action="{% url 'cancel_booking' booking.id %}">
-                        {% csrf_token %}
-                        <input type="submit" class="btn btn-danger" value="Cancel Booking">
-                    </form>
+                    <div class="row">
+                        <form method="POST" action="{% url 'cancel_booking' booking.id %}">
+                            {% csrf_token %}
+                            <div class="col-6 mt-2">
+                                <input type="submit" class="btn btn-danger" value="Cancel Booking">
+                            </div>
+                        </form>
+                        <div class="col-6 mt-2">
+                            <a href="{% url 'edit_booking' booking.id %}" class="btn white-brand bg-green-brand">Edit
+                                Booking</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

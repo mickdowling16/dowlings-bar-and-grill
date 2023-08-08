@@ -275,3 +275,39 @@ class CancelBookingView(RedirectView):
             self.request, "Booking has been canceled successfully!")
 
         return reverse('confirmed_bookings')
+
+
+class EditBookingView(LoginRequiredMixin, TemplateView):
+    template_name = 'edit_booking.html'
+    login_required = True
+
+    def get(self, request, booking_id):
+        booking = get_object_or_404(Bookings, id=booking_id)
+        context = {'booking': booking}
+        return render(request, self.template_name, context)
+
+    def post(self, request, booking_id):
+        booking = get_object_or_404(Bookings, id=booking_id)
+
+        try:
+            booking.name = request.POST.get("name")
+            booking.email = request.POST.get("email")
+            booking.phone = request.POST.get("phone")
+            booking.date = request.POST.get("date")
+            booking.time = request.POST.get("time")
+            booking.people = request.POST.get("people")
+            booking.message = request.POST.get("message")
+            booking.save()
+
+            messages.add_message(request, messages.SUCCESS,
+                                 f"The booking for {booking.name} has been updated.")
+            return redirect('confirmed_bookings')
+
+        except ValidationError as ve:
+            messages.add_message(request, messages.ERROR,
+                                 f"Validation error occurred: {ve}")
+            return redirect('edit_booking', booking_id=booking_id)
+        except Exception as e:
+            messages.add_message(
+                request, messages.ERROR, f"An error occurred while updating the booking: {e}")
+            return redirect('edit_booking', booking_id=booking_id)

@@ -14,6 +14,10 @@ The navbar is a feature used on all pages on the website and is vital for custom
 
 This navbar was created on my base.html template so I could import it on all pages.
 
+### Hero Image
+
+The hero image appears on the homepage welcoming the user to the website and showing them buttons for booking a table and viewing the menu so they can quickly navigate to the desired page. 
+
 ### Footer
 
 The footer is also found on every page on the website. The footer contains 3 columns including social media links, the address of the business and a navigation menu for added user experience when navigating the website
@@ -70,9 +74,13 @@ This functionality represents the features needed for a real world application t
 
 ## Design
 
-The design of my website was inspired by holidays to New York and Canada where the Irish sports bar is very popular and seen nationwide. I used a mixture of green, white and gold for my colours to represent Ireland and I used images of american sports bars to tie in with the theme. 
+The design of my website was inspired by holidays to New York and Canada where the Irish sports bar is very popular and seen nationwide. I used a mixture of green, white and gold for my colours to represent Ireland and I used images of american sports bars to tie in with the theme.
 
 ### Colour pallette
+
+![Colour Pallette](documentation/colours.PNG)
+
+I decided to use these colours as they represent the Irish flag colours and I think it ties in well with the overall theme of my website.
 
 ### Typography
 
