@@ -20,7 +20,7 @@ The hero image appears on the homepage welcoming the user to the website and sho
 
 ### Footer
 
-The footer is also found on every page on the website. The footer contains 3 columns including social media links, the address of the business and a navigation menu for added user experience when navigating the website
+The footer is also found on every page on the website. The footer contains 3 columns including social media links, the address of the business and business opening hours.
 
 This was also created on my base.html template to make it easier to implement on all pages.
 
@@ -89,3 +89,14 @@ I used the fonts Roboto Serif and Alice for the main fontson this site. I liked 
 ## Agile Methodology
 
 I used GitHub to implement agile methodology into this project by creating epics and user stories in my repository and using these to plan out my project and features to implement based on importance to achive a MVP. One week was spent on project planning where I outlined my original idea, features I'd like to include and a plan of attack. The initial sprint took 2 weeks where I implemented the main base of the project including the beginning templates and all html and css. I then reevaluated the features needed and the last sprint took 2 weeks to implement the main django features.
+
+--- 
+
+## Credits
+
+During the building of my Django application I used a number of resources to help me build and implement all the features that I wanted to include. These are listed below along with the location of any images I have used for the project. 
+
+- The code I used for implementing the initial booking app was created with help from this tutorial from [Selmi Tech](https://www.youtube.com/watch?v=3_3q_dE4_qs)
+- The code for sending emails from my forms and when changing bookings was created with help from [Scottish Coder](https://www.youtube.com/watch?v=1DcySa35fXw&t=7s)
+- The CSS used to style most of my project was taken from the Bootstrap documentaion [Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- The code used for creating and sending email templates was created with help from [Python Bricks](https://www.youtube.com/watch?v=Gqyk32guU_U)

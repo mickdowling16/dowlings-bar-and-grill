@@ -21,17 +21,6 @@
     background-color: #24704B;
 }
 
-.contact-section {
-    background-image:
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(36, 112, 75, 0.80)),
-        url('https://assets3.thrillist.com/v1/image/2859420/1000x666/flatten;crop;webp=auto;jpeg_quality=60.jpg');
-    padding: 20px;
-    margin: auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
 /* ..................................................Body Styles  */
 
 body {
@@ -107,21 +96,6 @@ h6 {
     list-style-type: none;
     color: white;
     text-decoration: none;
-}
-
-.footer-nav {
-    text-align: center;
-    margin: auto 0;
-}
-
-.footer-nav a {
-    color: white;
-    text-align: center;
-    text-decoration: none;
-}
-
-.footer-nav a:hover {
-    color: #FFBD59;
 }
 
 .footer-headers {
@@ -206,36 +180,7 @@ h6 {
     text-align: center;
 }
 
-/* ..................................................Opening Hours Section Style  */
-
-.open-hours-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: rgba(36, 112, 75);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-th,
-td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: rgba(0, 0, 0, 0.40);
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.20);
-}
-
-tr:last-child {
-    border-bottom: none;
-}
-
-/* ..................................................Contact Us Section Style  */
+/* ..................................................Contact Info Section Style  */
 .maps {
     width: 90%;
     height: 350px;
@@ -243,6 +188,17 @@ tr:last-child {
     margin: 0px auto;
     display: inline-block;
     border-radius: 20px;
+}
+
+.contact-section {
+    background-image:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(36, 112, 75, 0.80)),
+        url('https://assets3.thrillist.com/v1/image/2859420/1000x666/flatten;crop;webp=auto;jpeg_quality=60.jpg');
+    padding: 20px;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 /* ..................................................Menu Section Style  */
