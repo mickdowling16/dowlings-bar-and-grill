@@ -178,11 +178,45 @@ I used GitHub to implement agile methodology into this project by creating epics
 
 --- 
 
+## Testing
+
+
+
 ## Credits
 
-During the building of my Django application I used a number of resources to help me build and implement all the features that I wanted to include. These are listed below along with the location of any images I have used for the project. 
+During the building of my Django application I used a number of resources to help me build and implement all the features that I wanted to include. These are listed below along with the location of any images I have used for the project.
 
 - The code I used for implementing the initial booking app was created with help from this tutorial from [Selmi Tech](https://www.youtube.com/watch?v=3_3q_dE4_qs)
 - The code for sending emails from my forms and when changing bookings was created with help from [Scottish Coder](https://www.youtube.com/watch?v=1DcySa35fXw&t=7s)
 - The CSS used to style most of my project was taken from the Bootstrap documentaion [Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - The code used for creating and sending email templates was created with help from [Python Bricks](https://www.youtube.com/watch?v=Gqyk32guU_U)
+- For information building my django app I referened the models cheat sheet linked here [Cheat sheet](https://cheatography.com/lewiseason/cheat-sheets/django-models/)
+- I found useful information and code on building my Django views.py file from Codemy.com YouTube channel. He has videos of in depth Django tutorials that I found very useful when building this project[Codemycom youtube channel](https://www.youtube.com/@Codemycom/videos)
+
+## Media Credits
+
+Links to the images I used throughout this project can be found liked below
+
+- [Dowlings' bar image](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tripadvisor.com%2FAttraction_Review-g1060660-d8669808-Reviews-The_Garden_at_Dowlings_Pub-Athenry_County_Galway_Western_Ireland.html&psig=AOvVaw38bn6WTslnRGHwDJT7VZSa&ust=1691696630919000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDwlJqr0IADFQAAAAAdAAAAABAJ)
+- [Dowling's bar inside](https://hoteldesigns.net/wp-content/uploads/2018/11/Champions-photo-by-Tom-Bird-48-800x533.jpg)
+- [Hero Image](https://assets3.thrillist.com/v1/image/3055098/1200x630/flatten;crop_down;webp=auto;jpeg_quality=70)
+- [Contactus background image](https://assets3.thrillist.com/v1/image/2859420/1584x1054/crop;webp=auto;jpeg_quality=60.jpg)
+
+<details>
+<summary>Menu Image Links</summary>
+<br>
+
+- [Apple Pie](https://kristineskitchenblog.com/wp-content/uploads/2021/04/apple-pie-1200-square-592-2.jpg)
+- [Banana Split](https://www.tasteofhome.com/wp-content/uploads/2018/01/All-American-Banana-Split_EXPS_FT20_37953_F_0716_1.jpg?fit=700%2C1024)
+- [Beef Burger](https://perrysfieldtofork.co.uk/product/junior-chef-bbq-burger-making-february-2024/)
+- [Buffalo Wings](https://www.thespruceeats.com/thmb/JmNpXwN4cxjDVnzYP0uEeDQEaJg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/basic-buffalo-hot-wings-recipe-100937-hero-02-c47e70101cea4c05b427bf762f42454c.jpg)
+- [Chicken Burger](https://www.hintofhealthy.com/wp-content/uploads/2021/07/Crispy-Chicken-Burger-2-1.jpg)
+- [Chicken Strips](https://mybelizefood.com/uploads/restorants/8e3aae50-6f2f-4352-864e-a8acdcd4ba9e_large.jpg)
+- [Sundae](https://cookienameddesire.com/wp-content/uploads/2018/05/brownie-sundae.jpg)
+- [Mozzerella sticks](https://images.themodernproper.com/billowy-turkey/production/posts/2021/Homemade-Mozzarella-Sticks-9.jpeg?w=800&q=82&fm=jpg&fit=crop&dm=1638935116&s=25d4195d9b6f458690bd6cf685b4d13f)
+- [Nachos](https://i.pinimg.com/564x/34/50/82/345082af28e08c67b15881114bcc1628.jpg)
+- [Peacan Pie](https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_center,w_730,h_913/k%2FPhoto%2FRecipes%2F2019-11-how-to-pecan-pie%2F2019-10-21_Kitchn88235_HT-Pecan-Pie)
+- [Chowder](https://img.taste.com.au/F8v1Lp5K/w643-h428-cfill-q90/taste/2018/05/seafood-chowder-137923-1.jpg)
+- [Steak](https://media.istockphoto.com/id/498050296/photo/grilled-t-bone-steak-with-potato-wedges.jpg?s=1024x1024&w=is&k=20&c=D2MqGk4NXYJP50VjM2UsfLwLBFPKDWhq7YzdXWd0wgM=)
+
+</details>
