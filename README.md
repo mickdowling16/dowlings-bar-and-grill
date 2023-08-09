@@ -17,7 +17,9 @@ This navbar was created on my base.html template so I could import it on all pag
 <details>
 <summary>Navbar</summary>
 <br>
+
 ![navbar](documentation/navbar-logged-out.PNG)
+
 ![navbar](documentation/navbar-loggedin.PNG)
 </details>
 
@@ -28,6 +30,7 @@ The hero image appears on the homepage welcoming the user to the website. It has
 <details>
 <summary>Hero Image</summary>
 <br>
+
 ![Hero Image](documentation/hero-image.PNG)
 </details>
 
@@ -40,6 +43,7 @@ This was also created on my base.html template to make it easier to implement on
 <details>
 <summary>Footer</summary>
 <br>
+
 ![Footer](documentation/footer.PNG)
 </details>
 
@@ -52,6 +56,7 @@ This section was styled with bootstrap to create 2 side by side columns that dis
 <details>
 <summary>About Us</summary>
 <br>
+
 ![Welcome section](documentation/welcome-section.PNG)
 </details>
 
@@ -64,6 +69,7 @@ In future iterations of this project I would like to include a new menu app so t
 <details>
 <summary>Menu</summary>
 <br>
+
 ![Menu Section](documentation/menu-section.PNG)
 </details>
 
@@ -76,6 +82,7 @@ The second column on the contact us section is a contact form that sends an emai
 <details>
 <summary>Contact Us</summary>
 <br>
+
 ![Contact Section](documentation/contact-section.PNG)
 </details>
 
@@ -90,6 +97,7 @@ When this form is submitted, The page will update with a message to let the user
 <details>
 <summary>Reservations</summary>
 <br>
+
 ![Reservations Form](documentation/reservations-form.PNG)
 </details>
 
@@ -100,6 +108,7 @@ The admin log in page allows a super user to log in to the site to access admin 
 <details>
 <summary>Admin Log In</summary>
 <br>
+
 ![Admin log in page](documentation/admin-log-in.PNG)
 </details>
 
@@ -114,6 +123,7 @@ If the booking time or date does not suit the restuarant or the customer wants t
 <details>
 <summary>Manage Bookings</summary>
 <br>
+
 ![manage bookings](documentation/manage-bookings.PNG)
 </details>
 
@@ -127,6 +137,7 @@ This view also displays 9 bookings per page using pagination, on easy to read ca
 <details>
 <summary>Confirmed Bookings</summary>
 <br>
+
 ![Confirmed Bookings](documentation/confirmed-bookings.PNG)
 </details>
 
@@ -137,6 +148,7 @@ To edit a booking an admin can choose the edit button on the confirmed bookings 
 <details>
 <summary>Edit Bookings</summary>
 <br>
+
 ![Edit Bookings](documentation/edit-booking.PNG)
 </details>
 
