@@ -22,6 +22,7 @@ from django.http import JsonResponse
 
 class HomeTemplateView(TemplateView):
     template_name = "index.html"
+    title = "Homepage"
 
     def post(self, request):
         if request.method == 'POST':
