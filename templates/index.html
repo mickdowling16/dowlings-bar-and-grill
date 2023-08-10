@@ -11,14 +11,14 @@
         <br>
         <div class="row">
             <div class="col-md-6 col-sm-12 mb-1">
-                <a href="{% url 'booking' %}"><button type="button"
-                        class="hero-btn btn btn-outline-warning btn-lg btn-yellow-outline">Book A Table <i
-                            class="fa-solid fa-hand-pointer"></i></button></a>
+                <button type="button" class="hero-btn btn btn-outline-warning btn-lg btn-yellow-outline"><a
+                        href="{% url 'booking' %}"></a>Book A Table <i
+                        class="fa-solid fa-hand-pointer"></i></a></button>
             </div>
             <div class="col-md-6 col-sm-12 mb-1">
-                <a href="{% url 'home' %}#menu-anchor"><button type="button"
-                        class="hero-btn btn btn-outline-warning btn-lg btn-yellow-outline">View Menu <i
-                            class="fa-solid fa-utensils"></i></button></a>
+                <button type="button" class="hero-btn btn btn-outline-warning btn-lg btn-yellow-outline"><a
+                        href="{% url 'home' %}#menu-anchor"></a>View Menu <i
+                        class="fa-solid fa-utensils"></i></a></button>
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@
 
     <div class="col-md-6 col-sm-12 contact-us">
         <h3>Get in touch..</h3>
-        <form role="form" name="ajax-form" id="ajax-form" method="POST" action="{% url 'home' %}">
+        <form name="ajax-form" id="ajax-form" method="POST" action="{% url 'home' %}">
             {% csrf_token %}
             <div class="form-group">
                 <label for="name">Name</label>
