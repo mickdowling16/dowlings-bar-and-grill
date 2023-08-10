@@ -180,6 +180,8 @@ I used GitHub to implement agile methodology into this project by creating epics
 
 ## Testing
 
+My testing can be found in [Testing.md](TESTING.md)
+
 ## Deployment
 
 
