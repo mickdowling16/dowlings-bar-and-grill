@@ -2,9 +2,14 @@
 {% load static %}
 
 {% block content %}
-<!-- main hero image section -->
+{% if messages %}
+{% for message in messages %}
+<div class="mb-0 alert alert-{{ message.tags }}">{{ message }}</div>
+{% endfor %}
+{% endif %}
 
-<div class="jumbotron">
+<!-- main hero image section -->
+<div class="jumbotron mt-0">
     <div class="hero-text">
         <h1>Dowling's Bar & Grill</h1>
         <h2>Check out our game day menu and call us or book your table online to gaurentee your spot!</h2>

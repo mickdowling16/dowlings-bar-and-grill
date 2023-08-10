@@ -40,7 +40,10 @@ class HomeTemplateView(TemplateView):
                 reply_to=[email]
             )
             email.send()
-            return HttpResponse("Email sent successfully!")
+
+            messages.add_message(request, messages.SUCCESS,
+                                 f"Thanks for contacting us at Dowling's Bar and Grill, we will respond to your query as soon as possible")
+            return redirect(reverse('home'))
         else:
             return HttpResponse("Invalid request method. Only POST requests are allowed.")
 
