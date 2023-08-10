@@ -27,6 +27,19 @@ To test my HTML code I used [The W3C Markup Validation Service](https://validato
 
 - After fixing these few errors by adding code to my bookings view to populate page title and removing the role of the form. All tests passed
 
-![No errors on homepage](documentation/testing/no-errors-homepage-html.PNG)
+![No errors on bookings page](documentation/testing/no-errors-bookings.PNG)
+
+</details>
+
+<details>
+<summary>Admin Log In Page</summary>
+<br>
+- Errors in first test on log in page. These were similar to the errors on the homepage and an easy fix
+  
+![Log in page errors](documentation/testing/admin-log-in-error.PNG)
+
+- After fixing this error by adding code to my log in view to populate page title. All tests passed
+
+![No errors on bookings page](documentation/testing/no-errors-bookings.PNG)
 
 </details>

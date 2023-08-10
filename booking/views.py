@@ -214,6 +214,8 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
 
 
 def admin_login(request):
+    title = "Admin Login"
+
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
@@ -226,7 +228,7 @@ def admin_login(request):
     else:
         form = AuthenticationForm()
 
-    return render(request, 'admin/admin_login.html', {'form': form})
+    return render(request, 'admin/admin_login.html', {'form': form, 'title': title})
 
 
 def admin_logout(request):
