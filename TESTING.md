@@ -113,3 +113,39 @@ In order to properly validate my HTML pages with Jinja syntax for authenticated 
 ![No errors in suggested time email template](documentation/testing/suggested-time-email-no-errors.PNG)
 
 </details>
+
+
+## CSS Testing
+
+To test my CSS file I used [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/). I copy and pasted my CSS file into the validator and it returned no errors
+
+<details>
+<summary>CSS Testing</summary>
+<br>
+- No errors were found
+  
+![No errors in CSS File](documentation/testing/css-no-errors.PNG)
+
+</details>
+
+## JavaScript Testing
+
+To test my JavaScript code I used [JShint Validator](https://jshint.com/) to validate all of my JS files. The results are listed below.
+
+<details>
+<summary>Menu.js Test</summary>
+<br>
+- No errors were found in my menu.js file
+  
+![No errors in Menu JavaScript file](documentation/testing/menu-js-no-errors.PNG)
+
+</details>
+
+<details>
+<summary>Map.js Test</summary>
+<br>
+- There were a couple of undifined google variables in my JavaScript code. and one unused variable in mymap. These variables are pulled for the Google maps API and my google maps shows on my page without any issue. When trying to fix these errors my map dissapears from my page. I decided to revert back to the code I have so my map shows and try to fix the bug at a later time.
+  
+![Errors in maps javascript file](documentation/testing/maps-js-errors.PNG)
+
+</details>

@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 function myMap() {
     var mapProp = {
         center: new google.maps.LatLng(53.344435, -6.264790),
