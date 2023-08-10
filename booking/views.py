@@ -52,6 +52,7 @@ class HomeTemplateView(TemplateView):
 
 class BookingTemplateView(TemplateView):
     template_name = "booking.html"
+    title = "Reservations"
 
     def post(self, request):
         bookingname = request.POST.get("booking-name")
@@ -104,6 +105,7 @@ class BookingTemplateView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['title'] = self.title
         context['messages'] = messages.get_messages(self.request)
         return context
 
