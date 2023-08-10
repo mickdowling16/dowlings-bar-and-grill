@@ -81,6 +81,21 @@ In order to properly validate my HTML pages with Jinja syntax for authenticated 
   
 ![Edit bookings page errors](documentation/testing/edit-bookings-error.PNG)
 
-- 
+- After fixing the value of the time and date on my edit bookings form to properly pre populate with the correct format my code passed with no errors
+
+![no errors in bookings page](documentation/testing/no-errors-edit-bookings.PNG)
+
+</details>
+
+<details>
+<summary>Email HTML Template</summary>
+<br>
+- 3 errors were found on my edit bookings page. Page title as before and an error with the prepopulated code for date and time.
+  
+![Edit bookings page errors](documentation/testing/edit-bookings-error.PNG)
+
+- After fixing the value of the time and date on my edit bookings form to properly pre populate with the correct format my code passed with no errors
+
+![no errors in bookings page](documentation/testing/no-errors-edit-bookings.PNG)
 
 </details>
