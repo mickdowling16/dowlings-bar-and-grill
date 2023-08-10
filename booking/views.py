@@ -319,11 +319,12 @@ class CancelBookingView(RedirectView):
 
 class EditBookingView(LoginRequiredMixin, TemplateView):
     template_name = 'edit_booking.html'
+    title = "Edit Booking"
     login_required = True
 
     def get(self, request, booking_id):
         booking = get_object_or_404(Bookings, id=booking_id)
-        context = {'booking': booking}
+        context = {'booking': booking, 'title': self.title}
         return render(request, self.template_name, context)
 
     def post(self, request, booking_id):

@@ -55,12 +55,32 @@ In order to properly validate my HTML pages with Jinja syntax for authenticated 
 <details>
 <summary>Manage Bookings Page</summary>
 <br>
-- Errors in first test show there is multiple duplicate IDs. This must have been missed when copying the form to use again on the same page.
+- Errors in first test show there is multiple duplicate IDs. This was caused by having an ID value on the card and looping through for multiple cards causing the ID to duplicate.
   
-![Manage bookinh errors](documentation/testing/manage-bookings-errors-html.PNG)
+![Manage booking errors](documentation/testing/manage-bookings-errors-html.PNG)
 
-- To fix these errors I renamed the duplicate IDs
+- To fix these errors by changing all the id names to classes
 
-![No errors on log in page](documentation/testing/admin-log-in-no-errors.PNG)
+![No errors on manage bookings page](documentation/testing/no-errors-manage-bookings-html.PNG)
+
+</details>
+
+<details>
+<summary>Confirmed Bookings Page</summary>
+<br>
+- No errors were found on my confirmed bookings page.
+  
+![Confirmed bookings no errors](documentation/testing/no-errors-confirmed-bookings.PNG)
+
+</details>
+
+<details>
+<summary>Edit Bookings Page</summary>
+<br>
+- 3 errors were found on my edit bookings page. Page title as before and an error with the prepopulated code for date and time.
+  
+![Edit bookings page errors](documentation/testing/edit-bookings-error.PNG)
+
+- 
 
 </details>
