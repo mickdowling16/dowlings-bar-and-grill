@@ -44,6 +44,11 @@ class HomeTemplateView(TemplateView):
         else:
             return HttpResponse("Invalid request method. Only POST requests are allowed.")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.title
+        return context
+
 
 class BookingTemplateView(TemplateView):
     template_name = "booking.html"
