@@ -3,7 +3,15 @@
 
 ## HTML Testing
 
-To test my HTML code I used [The W3C Markup Validation Service](https://validator.w3.org/). Because my code contained Jinja syntax I tested my using the test by URI feature. Below are the recorder results
+To test my HTML code I used [The W3C Markup Validation Service](https://validator.w3.org/). Because my code contained Jinja syntax I tested my HTML code using the test by URI feature. Below are the recorder results. For the pages that required an admin to be logged in this approach did not work and I had to test the using the below steps.
+
+In order to properly validate my HTML pages with Jinja syntax for authenticated pages, I followed these steps:
+
+- Navigate to the deployed pages which require authentication
+- Right-click anywhere on the page, and select view page source
+- This displays the entire "compiled" code, without any Jinja syntax.
+- Copy everything, and use the validate by input method.
+- Repeat this process for every page that requires an admin to be logged in
 
 <details>
 <summary>Index.html page</summary>
@@ -40,6 +48,19 @@ To test my HTML code I used [The W3C Markup Validation Service](https://validato
 
 - After fixing this error by adding code to my log in view to populate page title. All tests passed
 
-![No errors on bookings page](documentation/testing/no-errors-bookings.PNG)
+![No errors on log in page](documentation/testing/admin-log-in-no-errors.PNG)
+
+</details>
+
+<details>
+<summary>Manage Bookings Page</summary>
+<br>
+- Errors in first test show there is multiple duplicate IDs. This must have been missed when copying the form to use again on the same page.
+  
+![Manage bookinh errors](documentation/testing/manage-bookings-errors-html.PNG)
+
+- To fix these errors I renamed the duplicate IDs
+
+![No errors on log in page](documentation/testing/admin-log-in-no-errors.PNG)
 
 </details>

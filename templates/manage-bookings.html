@@ -41,11 +41,12 @@
                             {% csrf_token %}
                             <input type="hidden" name="booking-id" value="{{ booking.id }}">
                             <input type="hidden" name="action" value="suggest_time">
-                            <label for="suggested-date">Suggested Date:</label>
-                            <input type="date" class="form-control mb-2" id="suggested-date" name="date" required>
-                            <label for="suggested-time">Suggested Time:</label>
-                            <input type="time" class="form-control mb-2" id="suggested-time" name="time" min="12:00"
-                                max="21:00" step="900" required>
+                            <label for="suggested-date-{{ booking.id }}">Suggested Date:</label>
+                            <input type="date" class="form-control mb-2" id="suggested-date-{{ booking.id }}"
+                                name="date" required>
+                            <label for="suggested-time-{{ booking.id }}">Suggested Time:</label>
+                            <input type="time" class="form-control mb-2" id="suggested-time-{{ booking.id }}"
+                                name="time" min="12:00" max="21:00" step="900" required>
                             <input class="btn-block bg-gold-brand form-control" type="submit" value="Suggest New Time">
                         </form>
                         {% else %}
@@ -53,11 +54,11 @@
                             {% csrf_token %}
                             <input type="hidden" name="booking-id" value="{{ booking.id }}">
                             <div class="form-group">
-                                <label for="date">Edit Date:</label>
-                                <input type="date" class="form-control mb-2" id="date" name="date"
+                                <label for="date-{{ booking.id }}">Edit Date:</label>
+                                <input type="date" class="form-control mb-2" id="date-{{ booking.id }}" name="date"
                                     value="{{ booking.date }}" required>
-                                <label for="time">Edit Time:</label>
-                                <input type="time" class="form-control mb-2" id="time" name="time"
+                                <label for="time-{{ booking.id }}">Edit Time:</label>
+                                <input type="time" class="form-control mb-2" id="time-{{ booking.id }}" name="time"
                                     value="{{ booking.time }}" min="12:00" max="21:00" step="900" required>
                             </div>
                             <input class="btn-block btn-primary form-control" type="submit" name="action"
