@@ -149,3 +149,154 @@ To test my JavaScript code I used [JShint Validator](https://jshint.com/) to val
 ![Errors in maps javascript file](documentation/testing/maps-js-errors.PNG)
 
 </details>
+
+## Python Testing
+
+I have used [CI Python Linter](https://pep8ci.herokuapp.com/) to validate all of my Python files. Below are the results.
+
+<details>
+<summary>Settings.py Test</summary>
+<br>
+- There were a couple of errors to do with line length in my settings.py file. When I fixed these errors my code passed 
+  
+![Errors in settings.py](documentation/testing/settings-py-error.PNG)
+
+- All tests passed
+
+![No errors in settings.py](documentation/testing/settings-py-no-errors.PNG)
+
+</details>
+
+<details>
+<summary>urls.py main</summary>
+<br>
+- There were no errors found in my main urls.py file
+  
+![No errors in main urls.py](documentation/testing/urls-main-no-errors.PNG)
+
+</details>
+
+<details>
+<summary>wsgi.py</summary>
+<br>
+- There were no errors found in my wsgi.py file
+  
+![No errors in wsgi.py file](documentation/testing/wysgi-no-errors.PNG)
+
+</details>
+
+<details>
+<summary>asgi.py</summary>
+<br>
+- There were no errors found in my wsgi.py file
+  
+![No errors in wsgi.py file](documentation/testing/asgi-no-errors.PNG)
+
+</details>
+
+<details>
+<summary>views.py</summary>
+<br>
+- There were errors found in my views.py file for too long line lengths.
+  
+![Errors in views.py file](documentation/testing/views-py-errors.PNG)
+
+- After fixing the line lengths my tests passed with no errors
+  
+![No errors in views.py file](documentation/testing/views-py-no-errors.PNG)
+
+</details>
+
+<details>
+<summary>models.py</summary>
+<br>
+- There were no errors found in my models.py file.
+  
+![No errors in models.py file](documentation/testing/models-py-no-errors.PNG)
+
+</details>
+
+<details>
+<summary>urls.py booking app</summary>
+<br>
+- There were no errors found in my urls.py file in my booking app.
+  
+![No errors in urls.py booking app file](documentation/testing/urls-booking-no-errors.PNG)
+
+</details>
+
+</details>
+
+<details>
+<summary>admin.py</summary>
+<br>
+- There were no errors found in my admin.py file
+  
+![No errors in admin.py file](documentation/testing/admin-py-no-errors.PNG)
+
+</details>
+
+<details>
+<summary>apps.py</summary>
+<br>
+- There were no errors found in my apps.py file
+  
+![No errors in apps.py file](documentation/testing/apps-py-no-errors.PNG)
+
+</details>
+
+## Browser Compatibility
+
+I've tested my app on multiple browsers including Chrome, Microsoft Edge and Firefox.
+
+<details>
+<summary>Chrome Compatibility</summary>
+<br>
+- My app was built using Google chrome and all of my development took place on Google chrome. No issues were found when using this browser and everything is working as expected. My site features work as intended and emails send correctly to users. 
+  
+![Chrome screenshot](documentation/testing/chrome-compatibility.PNG)
+
+</details>
+
+<details>
+<summary>Edge Compatibility</summary>
+<br>
+- when testing my app on Microsoft edge everything worked as expected. The styles remained consistant and emails sent without issues. There was not any difference in performance when testing on this browser
+  
+![Edge screenshot](documentation/testing/edge-compatibility.PNG)
+
+</details>
+
+<details>
+<summary>Firefox Compatibility</summary>
+<br>
+- when testing my app on Firefox everything worked as expected. Styles were the same except for the form elements where drop down menus and calenders looked different as expected on a different browser. All my emails and reservations form worked as expected and my alerts popped up when forms were submitted
+  
+![Firefox screenshot](documentation/testing/firefox-compatibility.PNG)
+
+</details>
+
+## Responsiveness
+
+When testing responsiveness I used my laptop, phone and tablet along with Google developer tools to test the app on different screen sizes. I styles my app with bootstrap to account for smaller screen sizes and for it to be responsive on mobile and tablet. It works as expected on these different screen sizes and below are screenshots from the manage bookings admin page on different devices.
+
+- Mobile(dev tools)
+
+![Mobile Responsiveness](documentation/testing/mobile-responsiveness.PNG)
+
+- Tablet Responsiveness(dev tools)
+
+![Tablet Responsiveness](documentation/testing/tablet-responsiveness.PNG)
+
+- Laptop Responsiveness(dev tools)
+
+![Laptop Responsiveness](documentation/testing/laptop-responsiveness-bookings.PNG)
+
+- Desktop Responsiveness(dev tools)
+
+![Desktop Responsiveness](documentation/testing/large-laptop-resonsiveness.PNG)
+
+## Lighthouse Audit
+
+I tested my deployed app speed on lighthouse to check for major issues
+

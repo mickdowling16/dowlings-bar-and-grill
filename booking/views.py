@@ -41,11 +41,14 @@ class HomeTemplateView(TemplateView):
             )
             email.send()
 
-            messages.add_message(request, messages.SUCCESS,
-                                 f"Thanks for contacting us at Dowling's Bar and Grill, we will respond to your query as soon as possible")
+            messages.add_message(
+                request, messages.SUCCESS,
+                f"Thanks for contacting us at Dowling's Bar and Grill, we will
+                'respond to your query ASAP")
             return redirect(reverse('home'))
         else:
-            return HttpResponse("Invalid request method. Only POST requests are allowed.")
+            return HttpResponse(
+                "Invalid request method. Only POST requests are allowed.")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -74,10 +77,12 @@ class BookingTemplateView(TemplateView):
         booking_time = datetime.datetime.strptime(bookingtime, "%H:%M").time()
 
         # Calculate the end time of the booking
-        end_time = (datetime.datetime.combine(datetime.date(1, 1, 1), booking_time) +
-                    datetime.timedelta(minutes=int(bookingpeople) * 30)).time()
+        end_time = (datetime.datetime.combine(
+            datetime.date(1, 1, 1), booking_time) +
+            datetime.timedelta(minutes=int(bookingpeople) * 30)).time()
 
-        # Calculate the total number of people already booked for the given time slot
+        # Calculate the total number of people already
+        # booked for the given time slot
         total_people_booked = Bookings.objects.filter(
             date=booking_date,
             time__range=(booking_time, end_time)
@@ -98,11 +103,16 @@ class BookingTemplateView(TemplateView):
             )
             booking.save()
 
-            messages.add_message(request, messages.SUCCESS,
-                                 f"Thanks {bookingname} for making a booking for the {bookingdate} at {bookingtime}, we will contact you to confirm as soon as possible")
+            messages.add_message(
+                request, messages.SUCCESS,
+                f"Thanks {bookingname} for making a booking for the
+                '{bookingdate} at {bookingtime}, we will contact you
+                'to confirm as soon as possible")
         else:
-            messages.add_message(request, messages.WARNING,
-                                 "Sorry, there are no available bookings for this time slot, please try an alternative time.")
+            messages.add_message(
+                request, messages.WARNING,
+                "Sorry, there are no available bookings for this
+                'time slot, please try an alternative time.")
 
         return HttpResponseRedirect(request.path)
 
@@ -134,7 +144,8 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
                     "date": booking.date,
                     "time": booking.time,
                 }
-                # email customer to confirm booking time and date using email.html template
+                # email customer to confirm booking time and
+                # date using email.html template
                 message = get_template('email.html').render(data)
                 email = EmailMessage(
                     "About your booking at Dowling's Bar & Grill",
@@ -146,8 +157,9 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
                 email.send()
 
                 # success message when booking confirmed
-                messages.add_message(request, messages.SUCCESS,
-                                     f"You accepted the booking of {booking.name}")
+                messages.add_message(
+                    request, messages.SUCCESS,
+                    f"You accepted the booking of {booking.name}")
 
             elif action == "suggest_time":
                 date = request.POST.get("date")
@@ -164,7 +176,8 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
                     "time": booking.suggested_time,
                 }
 
-                # email customer with new suggested time using email_suggested_time.html template
+                # email customer with new suggested time
+                # using email_suggested_time.html template
                 message = get_template(
                     'email_suggested_time.html').render(data)
                 email = EmailMessage(
@@ -178,24 +191,29 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
 
                 bookings = Bookings.objects.filter(
                     accepted=False).order_by('date')
-                context = self.get_context_data(unconfirmed_bookings=bookings)
+                context = self.get_context_data(
+                    unconfirmed_bookings=bookings)
                 self.request.session['django_timezone'] = 'UTC'
                 context.update({
                     "unconfirmed_bookings": bookings,
                     "title": "Manage Bookings"
                 })
 
-                messages.add_message(request, messages.INFO,
-                                     f"You suggested a new time for the booking of {booking.name}. An email will be sent to the customer.")
+                messages.add_message(
+                    request, messages.INFO,
+                    f"You suggested a new time for the booking of
+                    '{booking.name}. An email will be sent to the customer.")
 
                 return render(request, self.template_name, context)
         # messages for error handling for validation
         except ValidationError as ve:
-            messages.add_message(request, messages.ERROR,
-                                 f"Validation error occurred: {ve}")
+            messages.add_message(
+                request, messages.ERROR,
+                f"Validation error occurred: {ve}")
         except Exception as e:
             messages.add_message(
-                request, messages.ERROR, f"An error occurred while sending the email: {e}")
+                request, messages.ERROR,
+                f"An error occurred while sending the email: {e}")
 
         return HttpResponseRedirect(reverse('manage'))
 
@@ -231,7 +249,8 @@ def admin_login(request):
     else:
         form = AuthenticationForm()
 
-    return render(request, 'admin/admin_login.html', {'form': form, 'title': title})
+    return render(request, 'admin/admin_login.html',
+                  {'form': form, 'title': title})
 
 
 def admin_logout(request):
@@ -261,10 +280,12 @@ class ConfirmedBookingsListView(LoginRequiredMixin, ListView):
                     accepted=True, date=date_filter).order_by('date')
             except ValueError:
                 queryset = super().get_queryset().filter(
-                    accepted=True, date__gte=today - timedelta(days=1)).order_by('date')
+                    accepted=True, date__gte=today -
+                    timedelta(days=1)).order_by('date')
         else:
             queryset = super().get_queryset().filter(
-                accepted=True, date__gte=today - timedelta(days=1)).order_by('date')
+                accepted=True, date__gte=today -
+                timedelta(days=1)).order_by('date')
 
         return queryset
 
@@ -343,15 +364,18 @@ class EditBookingView(LoginRequiredMixin, TemplateView):
             booking.message = request.POST.get("message")
             booking.save()
 
-            messages.add_message(request, messages.SUCCESS,
-                                 f"The booking for {booking.name} has been updated.")
+            messages.add_message(
+                request, messages.SUCCESS,
+                f"The booking for {booking.name} has been updated.")
             return redirect('confirmed_bookings')
 
         except ValidationError as ve:
-            messages.add_message(request, messages.ERROR,
-                                 f"Validation error occurred: {ve}")
+            messages.add_message(
+                request, messages.ERROR,
+                f"Validation error occurred: {ve}")
             return redirect('edit_booking', booking_id=booking_id)
         except Exception as e:
             messages.add_message(
-                request, messages.ERROR, f"An error occurred while updating the booking: {e}")
+                request, messages.ERROR,
+                f"An error occurred while updating the booking: {e}")
             return redirect('edit_booking', booking_id=booking_id)
