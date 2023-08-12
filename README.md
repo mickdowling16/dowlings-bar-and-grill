@@ -244,17 +244,71 @@ If you require additional packages that have been installed, then the requiremen
   
 The Procfile can be created with the following command:
 > echo web: gunicorn app_name.wsgi > Procfile
-> replace app_name with the name of your primary Django app name
+
+replace app_name with the name of your primary Django app name
 
 For Heroku deployment, follow these steps to connect your own GitHub repository to the newly created app:
 
-Either Select Automatic Deployment from the Heroku app.
+#### Automatic Deployment
 
-Or: In the Terminal/CLI, connect to Heroku using this command: heroku login -i
-Set the remote for Heroku: heroku git:remote -a app_name (replace app_name with your app name)
-After performing the standard Git add, commit, and push to GitHub, you can now type:
-git push heroku main
+Select Automatic Deployment from the Heroku app.
+
+#### Manual Deployment
+
+- In the Terminal/CLI, connect to Heroku using this command: heroku login -i
+- Set the remote for Heroku: heroku git:remote -a app_name (replace app_name with your app name)
+- After performing the standard Git add, commit, and push to GitHub, you can now type: git push heroku main
+
 The project should now be connected and deployed to Heroku!
+
+## Local Deployment
+
+This project can be cloned or forked in order to make a local copy on your own system.
+
+For either method, you will need to install any applicable packages found within the requirements.txt file.
+
+- pip3 install -r requirements.txt.
+- You will need to create environment varibales file called env.py at the root-level, and include the same environment variables listed from the Heroku deployment steps.
+
+Sample env.py file:
+
+```
+import os
+
+os.environ.setdefault("CLOUDINARY_URL", "insert your own Cloudinary API key here")
+os.environ.setdefault("DATABASE_URL", "insert your own ElephantSQL database URL here")
+os.environ.setdefault("SECRET_KEY", "this can be any random secret key")
+
+```
+
+Once the project is cloned or forked, in order to run it locally, you'll need to follow these steps:
+
+1. Start the Django app: python3 manage.py runserver
+2. Stop the app once it's loaded: CTRL+C or ⌘+C (Mac)
+3. Make any necessary migrations: python3 manage.py makemigrations
+4. Migrate the data to the database: python3 manage.py migrate
+5. Create a superuser: python3 manage.py createsuperuser
+6. Everything should be ready now, so run the Django app again: python3 manage.py runserver
+   
+#### Cloning
+
+You can clone the repository by following these steps:
+
+1. Go to the GitHub repository
+2. Locate the Code button above the list of files and click it
+3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
+4. Open Git Bash or Terminal
+5. Change the current working directory to the one where you want the cloned directory
+5. In your IDE Terminal, type the following command to clone my repository:
+git clone <https://github.com/mickdowling16/dowlings-bar-and-grill>
+6. Press Enter to create your local clone.
+
+#### Forking
+By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository. You can fork this repository by using the following steps:
+
+1. Log in to GitHub and locate my GitHub Repository
+2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
 
 ## Credits
 
