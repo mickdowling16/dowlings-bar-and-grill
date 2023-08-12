@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from booking.views import admin_login, ManageBookingsTemplateView,
+from booking.views import admin_login, ManageBookingsTemplateView
 admin_logout, CancelBookingView, EditBookingView
 
 urlpatterns = [
