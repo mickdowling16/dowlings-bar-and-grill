@@ -306,19 +306,27 @@ I manually tested each page of my site performing tasks that both a user and adm
 
 - Homepage tests
 
-![Homepage Manual Tests](documentation/testing/home)
+![Homepage Manual Tests](documentation/testing/homepage-mt.PNG)
 
 - Reservations page
 
-![Reservations Manual Tests](documentation/testing/manual-testing-resrvations.PNG)
+![Reservations Manual Tests](documentation/testing/reservations-mt.PNG)
 
 - Manage Bookings page
 
-![Manage Bookings Manual Tests](documentation/testing/manual-testing-manage-bookings.PNG)
+![Manage Bookings Manual Tests](documentation/testing/manage-mt.PNG)
 
 - Confirmed Bookings page
 
-![Confirmed bookings Manual Tests](documentation/testing/manual-testing-confirmed-bookings.PNG)
+![Confirmed bookings Manual Tests](documentation/testing/confirmed-mt.PNG)
+
+- Admin Log in
+
+![Admin login Manual Tests](documentation/testing/admin-mt.PNG)
+
+- Edit booking page
+
+![Edit bookings Manual Tests](documentation/testing/edit-mt.PNG)
 
 ## User Story Testing
 
