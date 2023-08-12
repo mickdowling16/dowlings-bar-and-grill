@@ -152,7 +152,7 @@ To test my JavaScript code I used [JShint Validator](https://jshint.com/) to val
 
 ## Python Testing
 
-I have used [CI Python Linter](https://pep8ci.herokuapp.com/) to validate all of my Python files. Below are the results. When testing my python code the majority of the errors were related to line length. When i fixed this and went to deployment my heroku app was giving errors as it could not reap values split accross two lines. I've had to change back some of the python code I fixed including links to databases and static files in my settings.py and env.py file.
+I have used [CI Python Linter](https://pep8ci.herokuapp.com/) to validate all of my Python files. Below are the results. When testing my python code the majority of the errors were related to line length. When i fixed this and went to deployment my heroku app was giving errors as it could not read values split accross two lines. I've had to change back some of the python code I fixed including links to databases and static files in my settings.py and env.py file.
 
 <details>
 <summary>Settings.py Test</summary>

@@ -4,6 +4,8 @@ Welcome to Dowling's Bar & Grill, a combination of an American sports bar and an
 
 To achieve the goals of this project I have used full stack software development tools including HTML, CSS, JavaScript, Django and Python.
 
+[link to my deployed app](https://dowlings-bar-09ad35498c26.herokuapp.com/)
+
 ---
 
 ## Features 
@@ -92,7 +94,7 @@ The reservations page is a form that allows a user to book a table at Dowling's 
 
 The user can book a table with the calender for a date in the future only, for a time between 12pm and 9pm. This is the times in which the bar serves food 7 days a week. The user can then select the number of people between 2 and 8. They can then add a message for a special request or query. The restuarant can cater for a max of 20 people per time slot. If there are already more than 20 people booked on a particular slot the user will be shown an error message and asked to try an alternative time.
 
-When this form is submitted, The page will update with a message to let the user know that the booking has been submitted and they will be contacted as soon as possible for confirmation. The admin will then get an email to dowlingsbarandgrill@gmail.com to let them know there has been a new booking. This booking them appears in the admin panel manage bookings.
+When this form is submitted, The page will update with a message to let the user know that the booking has been submitted and they will be contacted as soon as possible for confirmation. The admin will then get an email to dowlingsbarandgrill@gmail.com to let them know there has been a new booking. This booking then appears in the admin panel manage bookings.
 
 <details>
 <summary>Reservations</summary>
@@ -192,7 +194,7 @@ I decided to use these colours as they represent the Irish flag colours and I th
 
 ### Typography
 
-I used the fonts Roboto Serif and Alice for the main fontson this site. I liked the Alice font for the headings and logo as I thought it looked old and classy and this was the vibe i was going for mith my sports bar, being inspired by New York. I used the Roboto Serif font for the main text as it looked clean and matched the design. I used Google fonts for these and imported them into my custom CSS file.
+I used the fonts Roboto Serif and Alice for the main fontson this site. I liked the Alice font for the headings and logo as I thought it looked old and classy and this was the vibe i was going for with my sports bar, being inspired by New York. I used the Roboto Serif font for the main text as it looked clean and matched the design. I used Google fonts for these and imported them into my custom CSS file.
 
 ## Agile Methodology
 
@@ -300,6 +302,7 @@ This app is deployed to [Heroku](https://heroku.com). After account set up follo
 
 Heroku also needs two additional files in order to deploy properly.
 > requirements.txt
+
 > Procfile
 
 
@@ -337,7 +340,7 @@ This project can be cloned or forked in order to make a local copy on your own s
 For either method, you will need to install any applicable packages found within the requirements.txt file.
 
 - pip3 install -r requirements.txt.
-- You will need to create environment varibales file called env.py at the root-level, and include the same environment variables listed from the Heroku deployment steps.
+- You will need to create environment varibales file called env.py at the root-level, and include the same environment variables listed from the Heroku deployment steps. Make sure to include this in your .gitignore file
 
 Sample env.py file:
 
@@ -389,7 +392,7 @@ During the building of my Django application I used a number of resources to hel
 - The code used for creating and sending email templates was created with help from [Python Bricks](https://www.youtube.com/watch?v=Gqyk32guU_U)
 - For information building my django app I referened the models cheat sheet linked here [Cheat sheet](https://cheatography.com/lewiseason/cheat-sheets/django-models/)
 - I found useful information and code on building my Django views.py file from Codemy.com YouTube channel. He has videos of in depth Django tutorials that I found very useful when building this project. I watched a number of different videos on this channel taking useful bits of info from the different web apps he builds.[Codemycom youtube channel](https://www.youtube.com/@Codemycom/videos)
-- I found the code institutes walkthrough projects helped me a lot implementing my email sending and basic django deployement for my site.
+- I found the code institutes walkthrough projects helped me a lot implementing my email sending and basic django deployment for my site.
 - The [django documentation](https://docs.djangoproject.com/en/4.2/) helped guide me through issues with setting up my views and models in the early part of my project development.
 - The [heroku doc on static files](https://devcenter.heroku.com/articles/django-assets) helped me understand getting my static files to appear on my deployed site
 

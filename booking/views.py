@@ -45,13 +45,14 @@ class HomeTemplateView(TemplateView):
             )
             email.send()
 
+            # success message for form
             messages.add_message(
                 request, messages.SUCCESS,
                 f"Thanks for contacting us at Dowling's Bar and Grill, we will respond to your query ASAP")
             return redirect(reverse('home'))
         else:
             return HttpResponse(
-                "Invalid request method. Only POST requests are allowed.")
+                "Invalid request method. Please try again.")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -63,6 +64,8 @@ class BookingTemplateView(TemplateView):
     template_name = "booking.html"
     title = "Reservations"
 
+
+    # send email when new form is submitted
     def send_booking_notification_email(self, bookingname, bookingemail, bookingphone, bookingdate, bookingtime, bookingpeople, bookingmessage):
         message = (
             f"A new booking has been submitted:\n\n"
@@ -92,7 +95,8 @@ class BookingTemplateView(TemplateView):
         bookingpeople = request.POST.get("booking-people")
         bookingmessage = request.POST.get("booking-message")
 
-        max_capacity_per_slot = 20  # Maximum capacity allowed per 30-minute slot
+        # Maximum capacity allowed per 30-minute slot
+        max_capacity_per_slot = 20 
 
         booking_date = datetime.strptime(bookingdate, "%Y-%m-%d").date()
         booking_time = datetime.strptime(bookingtime, "%H:%M").time()
@@ -125,6 +129,7 @@ class BookingTemplateView(TemplateView):
                 bookingname, bookingemail, bookingphone, bookingdate, bookingtime, bookingpeople, bookingmessage
             )
 
+            # alert messages for booking form submission
             messages.add_message(
                 request, messages.SUCCESS,
                 f"Thanks {bookingname} for making a booking for {bookingdate} at {bookingtime}. We will contact you to confirm as soon as possible.")
@@ -228,6 +233,7 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
                     "title": "Manage Bookings"
                 })
 
+                # message alert for new suggested time
                 messages.add_message(
                     request, messages.INFO,
                     f"You suggested a new time for the booking of {booking.name}. An email will be sent to the customer.")
@@ -261,7 +267,7 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
         })
         return context
 
-
+# admin log in request
 def admin_login(request):
     title = "Admin Login"
 
@@ -280,7 +286,7 @@ def admin_login(request):
     return render(request, 'admin/admin_login.html',
                   {'form': form, 'title': title})
 
-
+# admin log out request
 def admin_logout(request):
     logout(request)
     return redirect('home')
@@ -300,6 +306,7 @@ class ConfirmedBookingsListView(LoginRequiredMixin, ListView):
         today = timezone.now().date()
         date_filter = self.request.GET.get('date')
 
+        # filter by date
         if date_filter:
             try:
                 date_filter = timezone.datetime.strptime(
@@ -353,6 +360,7 @@ class CancelBookingView(RedirectView):
             "time": booking.time,
         }
 
+        # cancelled booking alert
         message = get_template('email_cancel_booking.html').render(data)
         email = EmailMessage(
             "Cancellation of your booking at Dowling's Bar & Grill",
@@ -408,7 +416,7 @@ class EditBookingView(LoginRequiredMixin, TemplateView):
                 f"An error occurred while updating the booking: {e}")
             return redirect('edit_booking', booking_id=booking_id)
 
-
+# error handling for pages not found
 def error_404(request, *args, **kwargs):
     return render(request, 'error.html', status=404)
 
