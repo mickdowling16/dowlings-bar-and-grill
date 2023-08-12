@@ -163,6 +163,17 @@ To edit a booking an admin can choose the edit button on the confirmed bookings 
 ![Edit Bookings](documentation/edit-booking.PNG)
 </details>
 
+### Error page
+
+An error page was added so when a user tries to access a page they don't have authorisation for or a page that does not exist they will be redirected to this error page
+
+<details>
+<summary>Error Page</summary>
+<br>
+
+![Edit Bookings](documentation/error-page.PNG)
+</details>
+
 ## CRUD Functionality
 
 I have implemented CRUD functionality into this project by allowing an admin the ability to fully manage booking to the restuarant. They can accept bookings, edit bookings, suggest new time and date for bookings and cancel bookings. The customer can add bookings using the reservations form.
