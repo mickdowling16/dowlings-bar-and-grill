@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = [
     'dowlings-bar-09ad35498c26.herokuapp.com',
     '8000-mickdowling16-dowlings-b-j0o30wo01h.us2.codeanyapp.com'
