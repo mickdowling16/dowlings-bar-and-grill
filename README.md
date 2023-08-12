@@ -179,8 +179,37 @@ I used GitHub to implement agile methodology into this project by creating epics
 
 ## Models Used
 
+I used a booking model for the main basis of my project. This allows users to submit a booking form to the admin where it can be accepted, ammeneded, edited and deleted. Below is the model used
 
---- 
+| Field Name    | Field Type            | Description                                                                      |
+|---------------|-----------------------|----------------------------------------------------------------------------------|
+| name          | CharField (max_length=100) | The name of the person making the booking.                                      |
+| email         | EmailField            | The email address of the person making the booking.                             |
+| phone         | CharField (max_length=20)  | The phone number of the person making the booking.                              |
+| date          | DateField             | The date for which the booking is being made.                                   |
+| time          | TimeField             | The time for which the booking is being made.                                   |
+| people        | PositiveIntegerField | The number of people for whom the booking is being made.                        |
+| message       | TextField (blank=True)| An optional message or additional information related to the booking.           |
+| sent_date     | DateField (auto_now_add=True) | The date when the booking entry was created.                               |
+| accepted      | BooleanField (default=False) | Indicates whether the booking has been accepted (True) or not (False).     |
+| accepted_date | DateField (null=True, blank=True) | The date when the booking was accepted. Null if not accepted.              |
+
+## Tools & Technologies Used
+
+- [HTML](https://en.wikipedia.org/wiki/HTML) used for the main site content.
+- [CSS](https://en.wikipedia.org/wiki/CSS) used for the main site design and layout.
+- [Bootstrap](https://getbootstrap.com/) used as the front-end CSS framework for modern responsiveness and pre-built components like forms, rows and columns.
+- [JavaScript](https://www.javascript.com/) used to populate menu items onto main page and display Google maps API.
+- [Python](https://www.python.org/) used as the back-end programming language.
+- [Git](https://git-scm.com/) used for version control. (git add, git commit, git push)
+- [GitHub](https://github.com/)used for secure online code storage.
+- [Codeanywhere](https://app.codeanywhere.com/) used as a cloud-based IDE for development.
+- [Django](https://www.djangoproject.com/) used as the Python framework for the site.
+- [PostgreSQL](https://www.postgresql.org/) used as the relational database management.
+- [ElephantSQL](https://www.elephantsql.com/) used as the Postgres database.
+- [Heroku](https://www.heroku.com/) used for hosting the deployed back-end site.
+- [Cloudinary](https://cloudinary.com/) used for online static file storage.
+- [Gmail](https://www.google.com/gmail/about/) used to create send and recieve emails from users.
 
 ## Testing
 
@@ -307,7 +336,7 @@ git clone <https://github.com/mickdowling16/dowlings-bar-and-grill>
 By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository. You can fork this repository by using the following steps:
 
 1. Log in to GitHub and locate my GitHub Repository
-2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+2. At the top of the Repository just above the "Settings" Button on the menu, locate the "Fork" Button.
 3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
 
 ## Credits
@@ -319,7 +348,10 @@ During the building of my Django application I used a number of resources to hel
 - The CSS used to style most of my project was taken from the Bootstrap documentaion [Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - The code used for creating and sending email templates was created with help from [Python Bricks](https://www.youtube.com/watch?v=Gqyk32guU_U)
 - For information building my django app I referened the models cheat sheet linked here [Cheat sheet](https://cheatography.com/lewiseason/cheat-sheets/django-models/)
-- I found useful information and code on building my Django views.py file from Codemy.com YouTube channel. He has videos of in depth Django tutorials that I found very useful when building this project[Codemycom youtube channel](https://www.youtube.com/@Codemycom/videos)
+- I found useful information and code on building my Django views.py file from Codemy.com YouTube channel. He has videos of in depth Django tutorials that I found very useful when building this project. I watched a number of different videos on this channel taking useful bits of info from the different web apps he builds.[Codemycom youtube channel](https://www.youtube.com/@Codemycom/videos)
+- I found the code institutes walkthrough projects helped me a lot implementing my email sending and basic django deployement for my site.
+- The [django documentation](https://docs.djangoproject.com/en/4.2/) helped guide me through issues with setting up my views and models in the early part of my project development.
+- The [heroku doc on static files](https://devcenter.heroku.com/articles/django-assets) helped me understand getting my static files to appear on my deployed site
 
 ## Media Credits
 

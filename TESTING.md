@@ -319,3 +319,16 @@ I manually tested each page of my site performing tasks that both a user and adm
 - Confirmed Bookings page
 
 ![Confirmed bookings Manual Tests](documentation/testing/manual-testing-confirmed-bookings.PNG)
+
+## Bugs
+
+### Solved Bugs
+
+- A major bug that I came across early in development was that my emails would not send using gmail. This was down to a couple of reasons. I needed to set up an app password for my gmail account for django to access it through a third party. I also needed to configure my settings.py file correctly for my email settings and I needed to add these settings to my config vars on heroku. I solved this by going ahead to the next walkthrough module for PP5 and looking at the email set up video. After following the walkthrough my emails were sending correctly
+- Another bug that I faced was after deployment to heroku my static files were not being shown on my site. This was fixed by looking through previous problems people had on slack to identify the problem. My static file links in my settings.py file were incorrect and when I changed them this problem was fixed.
+- Another bug on deployment to heroku was a internal server error where when debug was switched to False my site wasn't showing. This was an error between my database path. I was helped identify this by a fellow student on slack.
+- A small bug I encountered with my css was making my page scroll horizontially which was giving a bad user experience. I fixed this by editing my max width and height attributes for my body and content container in my css file
+
+### Unsolved bugs
+
+There are currently no unsolved bugs that I'm aware of
