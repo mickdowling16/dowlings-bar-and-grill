@@ -174,8 +174,18 @@ I used the fonts Roboto Serif and Alice for the main fontson this site. I liked 
 
 ## Agile Methodology
 
-I used GitHub to implement agile methodology into this project by creating epics and user stories in my repository and using these to plan out my project and features to implement based on importance to achive a MVP. One week was spent on project planning where I outlined my original idea, features I'd like to include and a plan of attack. The initial sprint took 2 weeks where I implemented the main base of the project including the beginning templates and all html and css. I then reevaluated the features needed and the last sprint took 2 weeks to implement the main django features.
+I used GitHub to implement agile methodology into this project by creating user stories in my repository and using these to plan out my project and features to implement based on importance to achive a MVP. 
 
+![Kanban Board](documentation/testing/kan)
+
+## MoSCoW Prioritization
+
+I used MoSCow prioritization to prioritze my user stories and make sure to implement the neccessary features. I added labels to my user stories in issues on github to do this
+
+- Must Have: guaranteed to be delivered
+- Should Have: adds significant value, but not vital
+- Could Have: has small impact if left out
+- Won't Have: not a priority for this iteration
 
 ## Models Used
 
