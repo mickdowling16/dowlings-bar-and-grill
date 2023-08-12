@@ -1,4 +1,4 @@
-from .models import Bookings  # Import your Bookings model
+from .models import Bookings
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
