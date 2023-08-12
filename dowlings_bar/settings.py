@@ -12,6 +12,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 ALLOWED_HOSTS = [
     'dowlings-bar-09ad35498c26.herokuapp.com',
+    'dowlings-bar.herokuapp.com',
+    'dowlings-bar.herokuapp.com/dowlings-bar/',
     '8000-mickdowling16-dowlings-b-j0o30wo01h.us2.codeanyapp.com'
 ]
 
