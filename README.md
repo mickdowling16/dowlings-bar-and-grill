@@ -176,7 +176,15 @@ I used the fonts Roboto Serif and Alice for the main fontson this site. I liked 
 
 I used GitHub to implement agile methodology into this project by creating user stories in my repository and using these to plan out my project and features to implement based on importance to achive a MVP. 
 
-![Kanban Board](documentation/testing/kan)
+![Kanban Board](documentation/testing/kanban.PNG)
+
+All my must have features have been implemented on my app. These are features that are crucial for both admin and user to have a fully working app that fulfills the objectives set out at the start
+
+![Closed User Stories](documentation/testing/closed-user-stories.PNG)
+
+The user stories that remain open were deemed not vital to the operation of my app. They would add to the overall performance of the app and are features that can be added in future iterations to achieve a larger scale restuarant management app
+
+![Open User Stories](documentation/testing/open-user-stories.PNG)
 
 ## MoSCoW Prioritization
 
