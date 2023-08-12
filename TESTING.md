@@ -300,17 +300,31 @@ When testing responsiveness I used my laptop, phone and tablet along with Google
 
 I tested my deployed app speed on lighthouse to check for major issues. Below are screenshots from each page of my website
 
-![Homepage Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
+- Homepage test
 
-![Bookings Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
+![Homepage Lighthouse](documentation/testing/homepage-lh.PNG)
 
-![manage bookings Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
+- My bookings page was giving a low score for accessability because I didn't have labels on my form. I fixed this and imporoved my score
 
-![confirmed bookings Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
+![Bookings Lighthouse](documentation/testing/bookings-lh-1.PNG)
 
-![edit bookings Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
+![Bookings Lighthouse](documentation/testing/bookings-lh-2.PNG)
 
-![admin log in Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
+- Manage bookings test
+  
+![manage bookings Lighthouse](documentation/testing/manage-lh.PNG)
+
+- Confirmed bookings test
+
+![confirmed bookings Lighthouse](documentation/testing/confirmed-lh.PNG)
+
+- Edit bookings test
+
+![edit bookings Lighthouse](documentation/testing/edit-lh.PNG)
+
+- Admin log in test
+
+![admin log in Lighthouse](documentation/testing/admin-lh.PNG)
 
 ## Manual Testing
 
