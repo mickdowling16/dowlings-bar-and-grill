@@ -47,7 +47,7 @@
                             <input type="hidden" name="action" value="suggest_time">
                             <label for="suggested-date-{{ booking.id }}">Suggested Date:</label>
                             <input type="date" class="form-control mb-2" id="suggested-date-{{ booking.id }}"
-                                name="date" required>
+                                name="date" required min="{{ today }}>
                             <label for="suggested-time-{{ booking.id }}">Suggested Time:</label>
                             <input type="time" class="form-control mb-2" id="suggested-time-{{ booking.id }}"
                                 name="time" min="12:00" max="21:00" step="900" required>

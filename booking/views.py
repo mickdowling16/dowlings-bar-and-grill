@@ -10,7 +10,7 @@ from django.conf import settings
 from django.contrib import messages
 from .models import Bookings
 from django.core.paginator import Paginator
-import datetime
+from datetime import datetime
 from django.template.loader import get_template
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -184,6 +184,16 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
             elif action == "suggest_time":
                 date = request.POST.get("date")
                 time = request.POST.get("time")
+                today = timezone.now().date()
+
+                suggested_date = datetime.strptime(date, "%Y-%m-%d").date()
+
+                if suggested_date < today:
+                    messages.add_message(
+                        request, messages.ERROR,
+                        "You can only suggest a date in the future.")
+                    return HttpResponseRedirect(reverse('manage'))
+
                 booking.suggested_date = date
                 booking.suggested_time = time
                 booking.date = date
