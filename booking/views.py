@@ -1,3 +1,7 @@
+from .models import Bookings  # Import your Bookings model
+from django.views.generic import TemplateView
+from django.http import HttpResponseRedirect
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.base import TemplateView, RedirectView
@@ -43,8 +47,7 @@ class HomeTemplateView(TemplateView):
 
             messages.add_message(
                 request, messages.SUCCESS,
-                f"Thanks for contacting us at Dowling's Bar and Grill, we will"
-                "respond to your query ASAP")
+                f"Thanks for contacting us at Dowling's Bar and Grill, we will respond to your query ASAP")
             return redirect(reverse('home'))
         else:
             return HttpResponse(
@@ -60,6 +63,26 @@ class BookingTemplateView(TemplateView):
     template_name = "booking.html"
     title = "Reservations"
 
+    def send_booking_notification_email(self, bookingname, bookingemail, bookingphone, bookingdate, bookingtime, bookingpeople, bookingmessage):
+        message = (
+            f"A new booking has been submitted:\n\n"
+            f"Name: {bookingname}\n"
+            f"Email: {bookingemail}\n"
+            f"Phone: {bookingphone}\n"
+            f"Date: {bookingdate}\n"
+            f"Time: {bookingtime}\n"
+            f"People: {bookingpeople}\n"
+            f"Message: {bookingmessage}\n"
+        )
+
+        send_mail(
+            f"New Booking: {bookingname}",
+            message,
+            settings.EMAIL_HOST_USER,
+            ['dowlingsbarandgrill@gmail.com'],
+            fail_silently=False,
+        )
+
     def post(self, request):
         bookingname = request.POST.get("booking-name")
         bookingemail = request.POST.get("booking-email")
@@ -69,26 +92,21 @@ class BookingTemplateView(TemplateView):
         bookingpeople = request.POST.get("booking-people")
         bookingmessage = request.POST.get("booking-message")
 
-        # Defining the maximum capacity allowed per 30-minute slot
-        max_capacity_per_slot = 20
+        max_capacity_per_slot = 20  # Maximum capacity allowed per 30-minute slot
 
         booking_date = datetime.datetime.strptime(
             bookingdate, "%Y-%m-%d").date()
         booking_time = datetime.datetime.strptime(bookingtime, "%H:%M").time()
 
-        # Calculate the end time of the booking
         end_time = (datetime.datetime.combine(
             datetime.date(1, 1, 1), booking_time) +
             datetime.timedelta(minutes=int(bookingpeople) * 30)).time()
 
-        # Calculate the total number of people already
-        # booked for the given time slot
         total_people_booked = Bookings.objects.filter(
             date=booking_date,
             time__range=(booking_time, end_time)
         ).aggregate(Sum('people'))['people__sum'] or 0
 
-        # Calculate the remaining capacity for the time slot
         remaining_capacity = max_capacity_per_slot - total_people_booked
 
         if remaining_capacity >= int(bookingpeople):
@@ -103,16 +121,18 @@ class BookingTemplateView(TemplateView):
             )
             booking.save()
 
+            # Send booking notification email
+            self.send_booking_notification_email(
+                bookingname, bookingemail, bookingphone, bookingdate, bookingtime, bookingpeople, bookingmessage
+            )
+
             messages.add_message(
                 request, messages.SUCCESS,
-                f"Thanks {bookingname} for making a booking for the"
-                "{bookingdate} at {bookingtime}, we will contact you"
-                "to confirm as soon as possible")
+                f"Thanks {bookingname} for making a booking for {bookingdate} at {bookingtime}. We will contact you to confirm as soon as possible.")
         else:
             messages.add_message(
                 request, messages.WARNING,
-                "Sorry, there are no available bookings for this"
-                "time slot, please try an alternative time.")
+                "Sorry, there are no available bookings for this time slot. Please try an alternative time.")
 
         return HttpResponseRedirect(request.path)
 
@@ -201,8 +221,7 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
 
                 messages.add_message(
                     request, messages.INFO,
-                    f"You suggested a new time for the booking of"
-                    "{booking.name}. An email will be sent to the customer.")
+                    f"You suggested a new time for the booking of {booking.name}. An email will be sent to the customer.")
 
                 return render(request, self.template_name, context)
         # messages for error handling for validation
