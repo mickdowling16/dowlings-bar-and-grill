@@ -94,13 +94,12 @@ class BookingTemplateView(TemplateView):
 
         max_capacity_per_slot = 20  # Maximum capacity allowed per 30-minute slot
 
-        booking_date = datetime.datetime.strptime(
-            bookingdate, "%Y-%m-%d").date()
-        booking_time = datetime.datetime.strptime(bookingtime, "%H:%M").time()
+        booking_date = datetime.strptime(bookingdate, "%Y-%m-%d").date()
+        booking_time = datetime.strptime(bookingtime, "%H:%M").time()
 
-        end_time = (datetime.datetime.combine(
-            datetime.date(1, 1, 1), booking_time) +
-            datetime.timedelta(minutes=int(bookingpeople) * 30)).time()
+        end_time = (datetime.combine(datetime(1, 1, 1), booking_time) +
+                    timedelta(minutes=int(bookingpeople) * 30)).time()
+
 
         total_people_booked = Bookings.objects.filter(
             date=booking_date,
@@ -156,7 +155,7 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
         try:
             if action == "accept":
                 booking.accepted = True
-                booking.accepted_date = datetime.datetime.now()
+                booking.accepted_date = datetime.now()
                 booking.save()
 
                 data = {
