@@ -298,7 +298,19 @@ When testing responsiveness I used my laptop, phone and tablet along with Google
 
 ## Lighthouse Audit
 
-I tested my deployed app speed on lighthouse to check for major issues
+I tested my deployed app speed on lighthouse to check for major issues. Below are screenshots from each page of my website
+
+![Homepage Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
+
+![Bookings Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
+
+![manage bookings Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
+
+![confirmed bookings Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
+
+![edit bookings Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
+
+![admin log in Lighthouse](documentation/testing/large-laptop-resonsiveness.PNG)
 
 ## Manual Testing
 
