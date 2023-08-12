@@ -406,4 +406,4 @@ US12:
 
 ### Unsolved bugs
 
-There are currently no unsolved bugs that I'm aware of
+- An unsolved bug I am experiences is to do with the PEP8 python code requirements. Some of my code goes over the reccommended character length. When I fixed this then my code wasn't reading correctly and my site was failing to deploy. I had to revent back some of the changes I made. I tried to use AutoPep8 to fix this issue but it would not work for me and my code still has problems. My app works as expected right now and I'm afraid to make changes this close to project submission and risk my app not working in deployment. For testing I fixed these issues and my code passed the validator so I'm happy that I have no mistakes, just the issue of line length.

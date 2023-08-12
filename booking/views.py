@@ -398,3 +398,11 @@ class EditBookingView(LoginRequiredMixin, TemplateView):
                 request, messages.ERROR,
                 f"An error occurred while updating the booking: {e}")
             return redirect('edit_booking', booking_id=booking_id)
+
+
+def error_404(request, *args, **kwargs):
+    return render(request, 'error.html', status=404)
+
+
+def error_403(request, *args, **kwargs):
+    return render(request, 'error.html', status=403)
