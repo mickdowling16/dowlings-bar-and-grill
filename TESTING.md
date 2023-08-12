@@ -360,26 +360,37 @@ The user stories were tested as part of the manual testing above and can be matc
 
 US1:
  - As a Admin I can limit the amount of bookings per time slot so that we don't get overbooked
+
 US2:
  - As a User I can easily access the bars social media channels so that I can follow them for updates and connect with their page
+
 US3:
  - As a Admin I can edit upcoming bookings so that I can easily change booking info at the request of a customer
+
 US4:
  - As a User I can receive updates on my booking so that I know if there is any changes
+
 US5:
  - As a Admin I can cancel bookings so that I can manage the number of tables being served
+
 US6:
  - As a User I can navigate the website so that I can find all the information I need easily
+
 US7:
  - As a Customer I can receive a confirmation so that I know my booking has been confirmed
+
 US8:
  - As a Admin I can login so that I can view all current bookings
+
 US9:
  - As a Admin I can manage bookings so that I can confirm or deny any booking requests
+
 US10:
  - As a Potential customer I can contact the restaurant so that I can make a special request or ask a question
+
 US11:
  - As a Potential customer I can book a table online so that I can secure my table at a time and date that suits me
+
 US12:
  - As a Potential customer I can view the menu options so that I can decide if I want to eat here
 
