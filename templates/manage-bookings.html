@@ -2,15 +2,19 @@
 {% load static %}
 
 {% block content %}
+
+<!-- message alerts  -->
 {% if messages %}
 {% for message in messages %}
 <div class="alert alert-{{ message.tags }}">{{ message }}</div>
 {% endfor %}
 {% endif %}
 
+<!-- page heading -->
 <div class="container">
     <h1>Manage Bookings</h1>
 
+    <!-- booking cards -->
     <div class="booking-container">
         {% for booking in unconfirmed_bookings %}
         <div class="mt-5 col-md-6 col-lg-4">
@@ -75,6 +79,7 @@
     </div>
 </div>
 
+<!-- booking cards pagination -->
 <div class="d-flex justify-content-center mt-4">
     <nav aria-label="Bookings pagination">
         <ul class="pagination">

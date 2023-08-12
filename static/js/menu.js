@@ -112,7 +112,7 @@ function generateMenuItems() {
               <h3 class="menu-item-title green-brand">${item.title}</h3>
               <p class="menu-item-price gold-brand">${item.price}</p>
               <p class="menu-item-description">${item.description}</p>
-              <img src="${item.image}" alt="${item.title}" class="menu-item-image">
+              <img src="${item.image}" alt="${item.title}" class="menu-item-image loading="lazy">
             </div>
           </div>
         `;

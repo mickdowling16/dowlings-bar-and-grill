@@ -3,6 +3,7 @@
 
 {% block content %}
 
+<!-- admin sign in area -->
 <div class="container admin-login-page">
     <div class="row justify-content-center">
         <div class="col">
@@ -22,6 +23,8 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Login</button>
                     </form>
+
+                    <!-- admin log out button -->
                     <p><a href="{% url 'admin_logout' %}">Logout</a></p>
                 </div>
             </div>

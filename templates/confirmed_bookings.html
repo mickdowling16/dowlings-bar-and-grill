@@ -2,15 +2,19 @@
 {% load static %}
 
 {% block content %}
+
+<!-- message alerts -->
 {% if messages %}
 {% for message in messages %}
 <div class="alert alert-{{ message.tags }}">{{ message }}</div>
 {% endfor %}
 {% endif %}
 
+<!-- page heading -->
 <div class="container mt-5">
     <h1>Confirmed Bookings</h1>
 
+    <!-- filter by date  -->
     <div class="mt-5">
         <form method="get" action="{% url 'confirmed_bookings' %}">
             <label for="date">Filter by Date:</label>
@@ -20,6 +24,7 @@
         </form>
     </div>
 
+    <!-- confirmed booking cards -->
     <div class="booking-container">
         {% for booking in bookings %}
         <div class=" mt-5 col-md-6 col-lg-4">
@@ -51,6 +56,7 @@
     </div>
 </div>
 
+<!-- confirmed bookings pagination -->
 <div class="d-flex justify-content-center mt-4">
     <nav aria-label="Bookings pagination">
         <ul class="pagination">
