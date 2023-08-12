@@ -14,7 +14,7 @@ ALLOWED_HOSTS = [
     'dowlings-bar-09ad35498c26.herokuapp.com',
     'dowlings-bar.herokuapp.com',
     'dowlings-bar.herokuapp.com/dowlings-bar/',
-    '8000-mickdowling16-dowlings-b-j0o30wo01h.us2.codeanyapp.com'
+    '8000-mickdowling16-dowlings-b-6j6dys1l9p.us2.codeanyapp.com/'
 ]
 
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
