@@ -176,6 +176,10 @@ I used the fonts Roboto Serif and Alice for the main fontson this site. I liked 
 
 I used GitHub to implement agile methodology into this project by creating epics and user stories in my repository and using these to plan out my project and features to implement based on importance to achive a MVP. One week was spent on project planning where I outlined my original idea, features I'd like to include and a plan of attack. The initial sprint took 2 weeks where I implemented the main base of the project including the beginning templates and all html and css. I then reevaluated the features needed and the last sprint took 2 weeks to implement the main django features.
 
+
+## Models Used
+
+
 --- 
 
 ## Testing
@@ -184,7 +188,71 @@ My testing can be found in [Testing.md](TESTING.md)
 
 ## Deployment
 
+My app is found deployed on Heroku.
 
+### ElephantSQL Database
+
+This app uses ElephantSQL for the PostgreSQL Database.
+
+To obtain your own Postgres Database, sign-up with your GitHub account, then follow the steps below:
+
+- Click Create New Instance to start a new database.
+- Provide a name, usually your project name
+- Select the free Tiny Turtle plan.
+- Select the Region and Data Center closest to you.
+- Now click on your new database name, where you can view the database URL and Password.
+
+### Cloudinary
+
+I used Cloudinary API to store my static files
+
+To create your own Cloudinary API key, create an account on [Cloudinary](https://cloudinary.com/) and log in.
+
+- You can choose to change your assigned cloud name to something else.
+- On your Cloudinary Dashboard, you can copy your API Environment Variable.
+- Be sure to remove the CLOUDINARY_URL= as part of the API value.
+
+### Heroku Deployment
+
+This app is deployed to [Heroku](https://heroku.com). After account set up follow the deployment steps below
+
+- Select create a new app from the dropdown menu on your Heroku Dashboard
+- Your app name must be unique, and then choose a region closest to you, then select Create App.
+- From your app Settings, click Reveal Config Vars, and set your environment variables.
+
+> CLOUDINARY_URL - insert your own Cloudinary API key here
+> DATABASE_URL - insert your own ElephantSQL database URL here
+> DISABLE_COLLECTSTATIC - 1 (this is temporary, and can be removed for the final deployment)
+> SECRET_KEY - this can be any random secret key
+> EMAIL_HOST_USER - This is to send emails in my app using Gmail. This will be the email address
+> EMAIL_HOST_PASS - This is the password for the email address to allow django to send emails
+
+Heroku also needs two additional files in order to deploy properly.
+> requirements.txt
+> Procfile
+
+
+You can install this project's requirements using:
+> pip3 install -r requirements.txt
+  
+
+If you require additional packages that have been installed, then the requirements file needs updated using
+> pip3 freeze --local > requirements.txt
+
+  
+The Procfile can be created with the following command:
+> echo web: gunicorn app_name.wsgi > Procfile
+> replace app_name with the name of your primary Django app name
+
+For Heroku deployment, follow these steps to connect your own GitHub repository to the newly created app:
+
+Either Select Automatic Deployment from the Heroku app.
+
+Or: In the Terminal/CLI, connect to Heroku using this command: heroku login -i
+Set the remote for Heroku: heroku git:remote -a app_name (replace app_name with your app name)
+After performing the standard Git add, commit, and push to GitHub, you can now type:
+git push heroku main
+The project should now be connected and deployed to Heroku!
 
 ## Credits
 

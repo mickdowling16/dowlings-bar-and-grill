@@ -300,3 +300,22 @@ When testing responsiveness I used my laptop, phone and tablet along with Google
 
 I tested my deployed app speed on lighthouse to check for major issues
 
+## Manual Testing
+
+I manually tested each page of my site performing tasks that both a user and admin would perform and recording the results. My tests are layed out below for each individual page and displayed in a table.
+
+- Homepage tests
+
+![Homepage Manual Tests](documentation/testing/manual-testing-homepage.PNG)
+
+- Reservations page
+
+![Reservations Manual Tests](documentation/testing/manual-testing-resrvations.PNG)
+
+- Manage Bookings page
+
+![Manage Bookings Manual Tests](documentation/testing/manual-testing-manage-bookings.PNG)
+
+- Confirmed Bookings page
+
+![Confirmed bookings Manual Tests](documentation/testing/manual-testing-confirmed-bookings.PNG)

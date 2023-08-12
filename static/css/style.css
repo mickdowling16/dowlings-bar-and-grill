@@ -289,3 +289,17 @@ h6 {
     align-items: center;
     margin: 0;
 }
+
+/* ------------------------------------------ Error page styling */
+.error-page {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.error-img {
+    width: 200px;
+    height: 200px;
+}

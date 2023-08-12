@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="error-page">
+    <h1> Error. You do not have required permissions to access this page</h1>
+    <img class="error-img" src="{% static 'images/error-image-w.webp' %}" alt="Error image">
+</div>
+
+{% endblock %}
