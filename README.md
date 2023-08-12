@@ -220,6 +220,8 @@ This app is deployed to [Heroku](https://heroku.com). After account set up follo
 - Your app name must be unique, and then choose a region closest to you, then select Create App.
 - From your app Settings, click Reveal Config Vars, and set your environment variables.
 
+| Config vars | Description |
+| ----------- | ----------- |
 | CLOUDINARY_URL | Insert your own Cloudinary API key here |
 | DATABASE_URL | Insert your own ElephantSQL database URL here |
 | DISABLE_COLLECTSTATIC  | 1 (this is temporary, and can be removed for the final deployment)|
