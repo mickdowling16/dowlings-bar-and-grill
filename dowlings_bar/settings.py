@@ -99,8 +99,6 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 #     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 # ]
 
-
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if 'DEVELOPMENT' in os.environ:

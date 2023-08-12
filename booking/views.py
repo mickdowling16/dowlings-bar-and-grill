@@ -43,8 +43,8 @@ class HomeTemplateView(TemplateView):
 
             messages.add_message(
                 request, messages.SUCCESS,
-                f"Thanks for contacting us at Dowling's Bar and Grill, we will
-                'respond to your query ASAP")
+                f"Thanks for contacting us at Dowling's Bar and Grill, we will"
+                "respond to your query ASAP")
             return redirect(reverse('home'))
         else:
             return HttpResponse(
@@ -105,14 +105,14 @@ class BookingTemplateView(TemplateView):
 
             messages.add_message(
                 request, messages.SUCCESS,
-                f"Thanks {bookingname} for making a booking for the
-                '{bookingdate} at {bookingtime}, we will contact you
-                'to confirm as soon as possible")
+                f"Thanks {bookingname} for making a booking for the"
+                "{bookingdate} at {bookingtime}, we will contact you"
+                "to confirm as soon as possible")
         else:
             messages.add_message(
                 request, messages.WARNING,
-                "Sorry, there are no available bookings for this
-                'time slot, please try an alternative time.")
+                "Sorry, there are no available bookings for this"
+                "time slot, please try an alternative time.")
 
         return HttpResponseRedirect(request.path)
 
@@ -201,8 +201,8 @@ class ManageBookingsTemplateView(LoginRequiredMixin, TemplateView):
 
                 messages.add_message(
                     request, messages.INFO,
-                    f"You suggested a new time for the booking of
-                    '{booking.name}. An email will be sent to the customer.")
+                    f"You suggested a new time for the booking of"
+                    "{booking.name}. An email will be sent to the customer.")
 
                 return render(request, self.template_name, context)
         # messages for error handling for validation
