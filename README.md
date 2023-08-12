@@ -99,6 +99,9 @@ When this form is submitted, The page will update with a message to let the user
 <br>
 
 ![Reservations Form](documentation/reservations-form.PNG)
+
+![new booking email](documentation/testing/new-booking-email.PNG)
+
 </details>
 
 ### Admin Log In
@@ -125,6 +128,11 @@ If the booking time or date does not suit the restuarant or the customer wants t
 <br>
 
 ![manage bookings](documentation/manage-bookings.PNG)
+
+![booking confirmation](documentation/booking-confirmation.PNG)
+
+![booking change](documentation/booking-update.PNG)
+
 </details>
 
 
@@ -139,6 +147,9 @@ This view also displays 9 bookings per page using pagination, on easy to read ca
 <br>
 
 ![Confirmed Bookings](documentation/confirmed-bookings.PNG)
+
+![Booking Cancelation](documentation/booking-cancelled.PNG)
+
 </details>
 
 ### Edit bookings
